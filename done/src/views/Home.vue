@@ -1,0 +1,71 @@
+<template>
+  <div class="home">
+    <div
+      v-if="meetingList.length > 0"
+      class="home__list"
+    >
+      <div
+        v-for="(item, index) in meetingList"
+        :key="index"
+        :class="[
+          'home__item',
+          { 'home__item--active': item.isActive },
+          { 'home__item--error': item.isError }
+        ]"
+      >
+        <h2>
+          {{ item.name }}
+        </h2>
+
+        <span class="date">
+          {{ item.date }}
+        </span>
+      </div>
+    </div>
+    <div v-else>
+      Meeting list is empty!
+    </div>
+
+    <footer>
+      <router-link to="/add-meeting">+</router-link>
+    </footer>
+  </div>
+</template>
+
+<script>
+import { mapState } from 'vuex'
+// @ is an alias to /src
+
+export default {
+  name: 'Home',
+  computed: {
+    ...mapState([
+      'meetingList'
+    ])
+  }
+}
+</script>
+
+<style scoped>
+
+.home__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home_item {
+  width: 250px;
+  padding: 24px;
+  background: white;
+  border: 1px solid;
+}
+
+.home__item--active {
+  background-color: green;
+}
+
+.home__item--error {
+  background-color: red;
+}
+</style>
