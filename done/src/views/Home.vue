@@ -26,8 +26,13 @@
       Meeting list is empty!
     </div>
 
-    <footer>
-      <router-link to="/add-meeting">+</router-link>
+    <footer class="home__footer">
+      <router-link
+        to="/add-meeting"
+        class="home__footer-link"
+      >
+        +
+      </router-link>
     </footer>
   </div>
 </template>
@@ -67,5 +72,15 @@ export default {
 
 .home__item--error {
   background-color: red;
+}
+
+.home__footer {
+  position: relative;
+  padding: 30px;
+  border-top: 1px solid #ddd;
+}
+
+.home__footer-link {
+
 }
 </style>

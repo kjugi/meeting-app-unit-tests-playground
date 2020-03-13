@@ -5,11 +5,15 @@
       <router-link to="/add-meeting">Add meeting</router-link>
     </header>
 
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
+body {
+  margin: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -20,6 +24,9 @@
 
 #nav {
   padding: 30px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
 }
 
 #nav a {
