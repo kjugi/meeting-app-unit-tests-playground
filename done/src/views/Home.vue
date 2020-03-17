@@ -50,9 +50,10 @@ export default {
   justify-content: center;
 }
 
-.home_item {
+.home__item {
   width: 250px;
   padding: 24px;
+  margin: 0 8px 8px 8px;
   background: white;
   border: 1px solid;
 }
