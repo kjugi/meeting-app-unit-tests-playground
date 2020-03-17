@@ -25,15 +25,6 @@
     <div v-else>
       Meeting list is empty!
     </div>
-
-    <footer class="home__footer">
-      <router-link
-        to="/add-meeting"
-        class="home__footer-link"
-      >
-        +
-      </router-link>
-    </footer>
   </div>
 </template>
 
