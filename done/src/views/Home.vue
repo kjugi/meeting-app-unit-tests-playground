@@ -14,11 +14,15 @@
         ]"
       >
         <h2>
-          {{ item.name }}
+          {{ item.who }}
         </h2>
 
         <span class="date">
           {{ item.date }}
+
+          <template v-if="item.hour">
+            {{ item.hour }}
+          </template>
         </span>
       </div>
     </div>
