@@ -13,7 +13,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    passingMeeting (commit, { data }) {
+    doReservation ({ commit }, data) {
       commit('addMeeting', data)
     }
   }
