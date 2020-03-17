@@ -9,7 +9,7 @@
     - input for email or select with list of people to meet with toggle checkbox
     - setting date of meeting with hours
     - checkbox for full day meeting
-    - save and cancel button
+    - save button
 5. Saving button adds meeting after backend response to booked meetings view
 
 ## Unit tests to write:
