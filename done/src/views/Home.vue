@@ -23,6 +23,9 @@
           <template v-if="item.hour">
             {{ item.hour }}
           </template>
+          <template v-else>
+            All day meeting
+          </template>
         </span>
       </div>
     </div>
@@ -34,7 +37,6 @@
 
 <script>
 import { mapState } from 'vuex'
-// @ is an alias to /src
 
 export default {
   name: 'Home',
@@ -46,7 +48,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.home {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 .home__list {
   display: flex;
@@ -55,9 +61,9 @@ export default {
 }
 
 .home__item {
-  width: 250px;
-  padding: 24px;
-  margin: 0 8px 8px 8px;
+  width: 300px;
+  padding: 20px;
+  margin: 0 10px 10px 10px;
   background: white;
   border: 1px solid;
 }
@@ -74,9 +80,5 @@ export default {
   position: relative;
   padding: 30px;
   border-top: 1px solid #ddd;
-}
-
-.home__footer-link {
-
 }
 </style>
