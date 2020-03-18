@@ -11,6 +11,8 @@ var appRouter = function (app) {
             status: true
         });
     });
+
+    // TODO: add list of predefined users
 }
 
 module.exports = appRouter;
