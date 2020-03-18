@@ -121,6 +121,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import axios from 'axios'
 
 export default {
   data () {
@@ -166,24 +167,32 @@ export default {
     ...mapActions([
       'doReservation'
     ]),
-    addMeeting () {
+    async addMeeting () {
       if (this.isFormValid) {
-        // TODO: Add axios with asking backend is it ok
-        const meetingInfo = {
-          date: this.meetingStart
+        try {
+          const meetingInfo = {
+            date: this.meetingStart
+          }
+
+          meetingInfo.who = this.predefined ? this.selectedPerson : this.email
+          meetingInfo.hour = this.allDay ? false : this.selectedHour
+          meetingInfo.timestamp = new Date(`${this.meetingStart} ${meetingInfo.hour || ''}`).getTime()
+
+          await axios.post('http://localhost:5679/add', {
+            meetingInfo
+          })
+
+          this.doReservation(meetingInfo)
+          // TODO: show success after action
+        } catch (e) {
+          // TODO: add exception
+        } finally {
+          this.clearPersonData()
+          this.allDay = true
+          this.selectedHour = ''
+          this.meetingStart = ''
         }
-
-        meetingInfo.who = this.predefined ? this.selectedPerson : this.email
-        meetingInfo.hour = this.allDay ? false : this.selectedHour
-        meetingInfo.timestamp = new Date(`${this.meetingStart} ${meetingInfo.hour || ''}`).getTime()
-
-        this.doReservation(meetingInfo)
-
-        this.clearPersonData()
-        this.allDay = true
-        this.selectedHour = ''
-        this.meetingStart = ''
-        // TODO: show success after action
+        // TODO: Add axios with asking backend is it ok
       }
     },
     clearPersonData () {
