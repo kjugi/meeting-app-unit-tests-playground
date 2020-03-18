@@ -192,7 +192,6 @@ export default {
           this.selectedHour = ''
           this.meetingStart = ''
         }
-        // TODO: Add axios with asking backend is it ok
       }
     },
     clearPersonData () {
