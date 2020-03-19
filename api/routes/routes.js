@@ -6,10 +6,7 @@ var appRouter = function (app) {
   });
 
   app.post('/add', function (req, res) {
-    // TODO: add random error response
-    res.status(200).send({
-      status: true
-    });
+    Math.random() >= 0.3 ? res.status(200).send(true) : res.status(400).send(false)
   });
 
   app
