@@ -116,6 +116,14 @@
         </p>
       </div>
     </div>
+
+    <message
+      v-show="isMessageShowed"
+      :class="messageClass"
+      :title="messageTitle"
+      :is-message-showed="isMessageShowed"
+      @hideMessage="isMessageShowed = false"
+    />
   </div>
 </template>
 
@@ -123,7 +131,12 @@
 import { mapActions } from 'vuex'
 import axios from 'axios'
 
+import Message from '@/components/Message.vue'
+
 export default {
+  components: {
+    Message
+  },
   data () {
     return {
       predefined: true,
@@ -133,7 +146,10 @@ export default {
       meetingStart: '',
       selectedHour: '',
       allDay: true,
-      isFormBlocked: true
+      isFormBlocked: true,
+      isMessageShowed: false,
+      messageTitle: '',
+      messageClass: ''
     }
   },
   async mounted () {
@@ -141,10 +157,11 @@ export default {
       const { data } = await axios.get('http://localhost:5679/users')
 
       this.options = data
-    } catch (e) {
-      // TODO: Some error which blocks the app
-    } finally {
       this.isFormBlocked = false
+    } catch (e) {
+      this.isMessageShowed = true
+      this.messageTitle = 'Failed when fetching user list'
+      this.messageClass = 'message--error'
     }
   },
   computed: {
@@ -176,22 +193,25 @@ export default {
 
           meetingInfo.who = this.predefined ? this.selectedPerson : this.email
           meetingInfo.hour = this.allDay ? false : this.selectedHour
-          meetingInfo.timestamp = new Date(`${this.meetingStart} ${meetingInfo.hour || ''}`).getTime()
 
           await axios.post('http://localhost:5679/add', {
             meetingInfo
           })
 
           this.doReservation(meetingInfo)
-          // TODO: show success after action
+          this.messageTitle = 'Successfully added a new meeting'
+          this.messageClass = 'message--success'
         } catch (e) {
-          // TODO: add exception
+          this.messageTitle = `Failed when adding a new meeting: ${e.message}. Try again`
+          this.messageClass = 'message--error'
         } finally {
+          this.isMessageShowed = true
+          this.isFormBlocked = false
+
           this.clearPersonData()
           this.allDay = true
           this.selectedHour = ''
           this.meetingStart = ''
-          this.isFormBlocked = false
         }
       }
     },
