@@ -7,11 +7,7 @@
       <div
         v-for="(item, index) in meetingList"
         :key="index"
-        :class="[
-          'home__item',
-          { 'home__item--active': item.isActive },
-          { 'home__item--error': item.isError }
-        ]"
+        class="home__item"
       >
         <h2>
           {{ item.who }}
@@ -66,14 +62,6 @@ export default {
   margin: 0 10px 10px 10px;
   background: white;
   border: 1px solid;
-}
-
-.home__item--active {
-  background-color: green;
-}
-
-.home__item--error {
-  background-color: red;
 }
 
 .home__footer {
