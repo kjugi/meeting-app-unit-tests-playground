@@ -1,5 +1,5 @@
 <template>
-  <div class="add-meeting">
+  <div :class="['add-meeting', { 'add-meeting--loading': isFormBlocked }]">
     <div class="add-meeting__container">
       <h1>Add meeting</h1>
 
@@ -103,7 +103,7 @@
         <button
           class="add-meeting__button"
           @click="addMeeting"
-          :disabled="!isFormValid"
+          :disabled="!isFormValid || isFormBlocked"
         >
           Save meeting
         </button>
@@ -128,24 +128,23 @@ export default {
     return {
       predefined: true,
       email: '',
-      options: [
-        {
-          text: 'test',
-          value: 'example@o2.pl'
-        },
-        {
-          text: 'Example Person1',
-          value: 'meeting1@gmail.com'
-        },
-        {
-          text: 'Example Person2',
-          value: 'meeting2@gmail.com'
-        }
-      ],
+      options: null,
       selectedPerson: '',
       meetingStart: '',
       selectedHour: '',
-      allDay: true
+      allDay: true,
+      isFormBlocked: true
+    }
+  },
+  async mounted () {
+    try {
+      const { data } = await axios.get('http://localhost:5679/users')
+
+      this.options = data
+    } catch (e) {
+      // TODO: Some error which blocks the app
+    } finally {
+      this.isFormBlocked = false
     }
   },
   computed: {
@@ -170,6 +169,7 @@ export default {
     async addMeeting () {
       if (this.isFormValid) {
         try {
+          this.isFormBlocked = true
           const meetingInfo = {
             date: this.meetingStart
           }
@@ -191,6 +191,7 @@ export default {
           this.allDay = true
           this.selectedHour = ''
           this.meetingStart = ''
+          this.isFormBlocked = false
         }
       }
     },
@@ -203,6 +204,17 @@ export default {
 </script>
 
 <style>
+.add-meeting--loading:before {
+  content: 'Loading...';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
 .add-meeting__container {
   max-width: 800px;
   margin: 0 auto;
