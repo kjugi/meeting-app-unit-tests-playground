@@ -35,18 +35,13 @@
           />
         </div>
 
-        <div class="add-meeting__field">
-          <label for="predefined">
-            Predefined?
-          </label>
-
-          <input
-            id="predefined"
-            v-model="predefined"
-            type="checkbox"
-            @change="clearPersonData"
-          />
-        </div>
+        <checkbox-field
+          id="predefined"
+          v-model="predefined"
+          label="Predefined?"
+          class="add-meeting__field"
+          @change="clearPersonData"
+        />
       </div>
 
       <div class="add-meeting__wrapper">
@@ -64,17 +59,13 @@
       </div>
 
       <div class="add-meeting__wrapper">
-        <div class="add-meeting__field">
-          <label for="all-day">
-            All day meeting? (from 9am to 6pm)
-          </label>
-
-          <input
-            id="all-day"
-            v-model="allDay"
-            type="checkbox"
-          />
-        </div>
+        <checkbox-field
+          id="all-day"
+          v-model="allDay"
+          label="All day meeting? (from 9am to 6pm)"
+          class="add-meeting__field"
+          @change="selectedHour = ''"
+        />
 
         <div
           v-if="!allDay"
@@ -131,10 +122,12 @@
 import { mapActions } from 'vuex'
 import axios from 'axios'
 
+import CheckboxField from '@/components/Checkbox.vue'
 import Message from '@/components/Message.vue'
 
 export default {
   components: {
+    CheckboxField,
     Message
   },
   data () {
