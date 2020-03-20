@@ -14,3 +14,10 @@
 ## Unit tests to write:
 
 TODO
+1. Message component
+    - renders prop title when passed
+    - emit event when isMessageShowed updates
+2. Checkbox component
+    - emit events when input on checkbox
+3. Home view
+4. Add Meeting view
