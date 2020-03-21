@@ -20,4 +20,8 @@ TODO
 2. Checkbox component
     - emit events when input on checkbox
 3. Home view
+    - meeting list contains elements from store
+    - render empty list message when don\'t have items
 4. Add Meeting view
+5. Snapshot testing
+6. Testing vuex store actions and mutations
