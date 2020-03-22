@@ -23,5 +23,19 @@ TODO
     - meeting list contains elements from store
     - render empty list message when don\'t have items
 4. Add Meeting view
+    - default form is rendered
+    - has loading class when form is blocked
+    - predefined addreses are available
+    - predefined select emit @input when change value
+    - predefined checkbox emit @input, toggle fields and clear values
+    - can set custom meeting start in form
+    - min attribute in input date has today date
+    - all day checkbox toggle input on field and clear selectedHour
+    - can select custom hour value in form
+    - error is showed when form is invalid
+    - button can be disable or enabled
+    - button emit event with @addEvent
+    - message is showed after button click and hide on @hideMessage event
+    - can add meeting to store
 5. Snapshot testing
 6. Testing vuex store actions and mutations
