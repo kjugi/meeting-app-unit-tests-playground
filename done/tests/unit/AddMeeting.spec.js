@@ -3,11 +3,18 @@ import AddMeeting from '@/views/AddMeeting.vue'
 
 describe('AddMeeting page', () => {
   it('default form is rendered', () => {
-    const wrapper = mount(AddMeeting, {
-      propsData: {
-        //
-      }
-    })
+    const wrapper = mount(AddMeeting)
+
+    expect(wrapper.classes()).toStrictEqual([
+      'add-meeting',
+      'add-meeting--loading'
+    ])
+    expect(wrapper.find('#email').exists()).toBe(true)
+    expect(wrapper.find('#predefined').exists()).toBe(true)
+    expect(wrapper.find('#start').exists()).toBe(true)
+    expect(wrapper.find('#all-day').exists()).toBe(true)
+    expect(wrapper.find('.add-meeting__button').exists()).toBe(true)
+    expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
   })
 
   // it('has loading class when form is blocked', () => {})
