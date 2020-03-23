@@ -10,6 +10,7 @@
     - checkbox for full day meeting
     - save button
 4. Saving button adds meeting after backend response to booked meetings view
+5. Add unit tests in CI
 
 ## Unit tests to write:
 
@@ -23,19 +24,17 @@ TODO
     - meeting list contains elements from store
     - render empty list message when don\'t have items
 4. Add Meeting view
-    - default form is rendered
-    - has loading class when form is blocked
-    - predefined addreses are available
-    - predefined select emit @input when change value
-    - predefined checkbox emit @input, toggle fields and clear values
-    - can set custom meeting start in form
-    - min attribute in input date has today date
-    - all day checkbox toggle input on field and clear selectedHour
-    - can select custom hour value in form
-    - error is showed when form is invalid
-    - button can be disable or enabled
-    - button emit event with @addEvent
+    - default form is rendered (143ms)
+    - has loading class when form is blocked (15ms)
+    - predefined addreses are available (19ms)
+    - predefined select change value to selected option (19ms)
+    - predefined checkbox toggle fields and clear values (29ms)
+    - can set custom meeting start in form (11ms)
+    - min attribute in input date has today date (13ms)
+    - all day checkbox toggle input on field and clear selectedHour (22ms)
+    - error is showed when form is invalid (61ms)
+    - button can be disable or enabled (115ms)
+    - can add meeting to store (21ms)
     - message is showed after button click and hide on @hideMessage event
-    - can add meeting to store
 5. Snapshot testing
 6. Testing vuex store actions and mutations
