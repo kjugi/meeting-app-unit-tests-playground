@@ -6,7 +6,7 @@ var appRouter = function (app) {
   });
 
   app.post('/add', function (req, res) {
-    Math.random() >= 0.3 ? res.status(200).send(true) : res.status(400).send(false)
+    res.status(200).send(true)
   });
 
   app
