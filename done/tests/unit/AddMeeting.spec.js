@@ -1,5 +1,8 @@
 import { mount } from '@vue/test-utils'
+import flushPromises from 'flush-promises'
 import AddMeeting from '@/views/AddMeeting.vue'
+
+jest.mock('axios')
 
 describe('AddMeeting page', () => {
   it('default form is rendered', () => {
@@ -17,7 +20,18 @@ describe('AddMeeting page', () => {
     expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
   })
 
-  // it('has loading class when form is blocked', () => {})
+  it('has loading class when form is blocked', async () => {
+    const wrapper = mount(AddMeeting)
+
+    expect(wrapper.vm.isFormBlocked).toBe(true)
+    expect(wrapper.classes('add-meeting--loading')).toBe(true)
+
+    await flushPromises()
+    await wrapper.setData({ isFormBlocked: false })
+
+    expect(wrapper.vm.isFormBlocked).toBe(false)
+    expect(wrapper.classes('add-meeting--loading')).toBe(false)
+  })
 
   // it('predefined addreses are available', () => {})
 
