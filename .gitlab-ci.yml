@@ -1,0 +1,11 @@
+stages:
+  - test
+
+unit test:
+  stage: test
+  image: node:12-alpine
+  before_script:
+    - cd done/
+    - yarn
+  script:
+    - yarn test:unit
