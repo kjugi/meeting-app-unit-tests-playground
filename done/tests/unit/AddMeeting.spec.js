@@ -1,10 +1,46 @@
-import { mount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
+import Vuex from 'vuex'
+import axios from 'axios'
+import MockArapter from 'axios-mock-adapter'
 import flushPromises from 'flush-promises'
 import AddMeeting from '@/views/AddMeeting.vue'
 
-jest.mock('axios')
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+jest.useFakeTimers()
 
 describe('AddMeeting page', () => {
+  let actions
+  let store
+
+  beforeEach(() => {
+    actions = {
+      doReservation: jest.fn()
+    }
+    store = new Vuex.Store({
+      actions
+    })
+
+    const mock = new MockArapter(axios)
+
+    mock.onGet('http://localhost:5679/users').reply(200, [
+      {
+        text: 'test',
+        value: 'example@o2.pl'
+      },
+      {
+        text: 'Example Person1',
+        value: 'meeting1@gmail.com'
+      },
+      {
+        text: 'Example Person2',
+        value: 'meeting2@gmail.com'
+      }
+    ])
+    mock.onPost('http://localhost:5679/add').reply(200, true)
+  })
+
   it('default form is rendered', () => {
     const wrapper = mount(AddMeeting)
 
@@ -27,33 +63,172 @@ describe('AddMeeting page', () => {
     expect(wrapper.classes('add-meeting--loading')).toBe(true)
 
     await flushPromises()
-    await wrapper.setData({ isFormBlocked: false })
+    wrapper.setData({ isFormBlocked: false })
 
     expect(wrapper.vm.isFormBlocked).toBe(false)
     expect(wrapper.classes('add-meeting--loading')).toBe(false)
   })
 
-  // it('predefined addreses are available', () => {})
+  it('predefined addreses are available', async () => {
+    const wrapper = mount(AddMeeting)
 
-  // it('predefined select emit @input when change value', () => {})
+    expect(wrapper.vm.options).toBeNull()
 
-  // it('predefined checkbox emit @input, toggle fields and clear values', () => {})
+    await flushPromises()
 
-  // it('can set custom meeting start in form', () => {})
+    expect(wrapper.vm.isMessageShowed).toBe(false)
+    expect(wrapper.vm.messageTitle).toBe('')
+    expect(wrapper.vm.options.length).toBe(3)
+    expect(wrapper.findAll('#email option').length).toBe(4)
+  })
 
-  // it('min attribute in input date has today date', () => {})
+  it('predefined select change value to selected option', async () => {
+    const wrapper = mount(AddMeeting)
+    await flushPromises()
 
-  // it('all day checkbox toggle input on field and clear selectedHour', () => {})
+    expect(wrapper.vm.selectedPerson).toBe('')
 
-  // it('can select custom hour value in form', () => {})
+    wrapper.findAll('#email option').at(2).setSelected()
 
-  // it('error is showed when form is invalid', () => {})
+    expect(wrapper.vm.selectedPerson).toBe('Example Person1')
+  })
 
-  // it('button can be disable or enabled', () => {})
+  it('predefined checkbox toggle fields and clear values', async () => {
+    const wrapper = mount(AddMeeting)
+    await flushPromises()
 
-  // it('button emit event with @addEvent', () => {})
+    expect(wrapper.vm.predefined).toBe(true)
 
-  // it('message is showed after button click and hide on @hideMessage event', () => {})
+    await wrapper.find('#predefined').setChecked(false)
 
-  // it('can add meeting to store', () => {})
+    expect(wrapper.vm.predefined).toBe(false)
+
+    wrapper.find('#email').setValue('example value')
+
+    expect(wrapper.vm.email).toBe('example value')
+
+    await wrapper.find('#predefined').setChecked(true)
+
+    expect(wrapper.vm.email).toBe('')
+    expect(wrapper.find('#email').exists()).toBe(true)
+  })
+
+  it('can set custom meeting start in form', async () => {
+    const wrapper = mount(AddMeeting)
+    const todayDateFormat = new Date().toJSON().slice(0, 10)
+    await flushPromises()
+
+    expect(wrapper.vm.meetingStart).toBe('')
+
+    wrapper.find('#start').setValue(todayDateFormat)
+
+    expect(wrapper.find('#start').element.value).toBe(todayDateFormat)
+    expect(wrapper.vm.meetingStart).toBe(todayDateFormat)
+  })
+
+  it('min attribute in input date has today date', async () => {
+    const wrapper = mount(AddMeeting)
+    const todayDateFormat = new Date().toJSON().slice(0, 10)
+    await flushPromises()
+
+    expect(wrapper.find('#start').attributes().min).toBe(todayDateFormat)
+  })
+
+  it('all day checkbox toggle input on field and clear selectedHour', async () => {
+    const wrapper = mount(AddMeeting)
+    await flushPromises()
+
+    expect(wrapper.vm.allDay).toBe(true)
+
+    await wrapper.find('#all-day').setChecked(false)
+
+    expect(wrapper.vm.allDay).toBe(false)
+
+    wrapper.find('#hour').setValue('12:55')
+
+    expect(wrapper.vm.selectedHour).toBe('12:55')
+
+    await wrapper.find('#all-day').setChecked(true)
+
+    expect(wrapper.vm.selectedHour).toBe('')
+    expect(wrapper.find('#email').exists()).toBe(true)
+  })
+
+  it('error is showed when form is invalid', async () => {
+    const wrapper = mount(AddMeeting)
+
+    expect(wrapper.vm.isFormValid).toBe(false)
+    expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
+
+    await wrapper.setData({
+      email: 'test',
+      allDay: true,
+      meetingStart: '2020-12-12'
+    })
+
+    expect(wrapper.vm.isFormValid).toBe(true)
+    expect(wrapper.find('.add-meeting__error').exists()).toBe(false)
+  })
+
+  it('button can be disable or enabled', async () => {
+    const wrapper = mount(AddMeeting)
+    await flushPromises()
+
+    expect(wrapper.vm.isFormValid).toBe(false)
+    expect(wrapper.vm.isFormBlocked).toBe(false)
+    expect(wrapper.find('.add-meeting__button').attributes().disabled).toBe('disabled')
+
+    await wrapper.setData({
+      email: 'test',
+      allDay: true,
+      meetingStart: '2020-12-12'
+    })
+
+    expect(wrapper.vm.isFormValid).toBe(true)
+    expect(wrapper.find('.add-meeting__button').attributes().disabled).toBeUndefined()
+  })
+
+  it('can add meeting to store', async () => {
+    const wrapper = mount(AddMeeting, { store, localVue })
+    await flushPromises()
+    await wrapper.setData({
+      email: 'test',
+      allDay: true,
+      meetingStart: '2020-12-12'
+    })
+
+    wrapper.find('.add-meeting__button').trigger('click')
+
+    expect(wrapper.vm.isFormBlocked).toBe(true)
+
+    await flushPromises()
+
+    expect(actions.doReservation).toHaveBeenCalled()
+    expect(wrapper.vm.isFormBlocked).toBe(false)
+    expect(wrapper.vm.email).toBe('')
+    expect(wrapper.vm.meetingStart).toBe('')
+  })
+
+  it('message is showed after button click and hide on @hideMessage event', async () => {
+    const wrapper = mount(AddMeeting, { store, localVue })
+    await flushPromises()
+    await wrapper.setData({
+      email: 'test',
+      allDay: true,
+      meetingStart: '2020-12-12'
+    })
+    wrapper.find('.add-meeting__button').trigger('click')
+    await flushPromises()
+
+    expect(wrapper.vm.isMessageShowed).toBe(true)
+    expect(wrapper.vm.messageClass).toBe('message--success')
+    expect(wrapper.vm.messageTitle).toBe('Successfully added a new meeting')
+    expect(wrapper.find('.message--success').isVisible()).toBe(true)
+
+    jest.runAllTimers()
+    await flushPromises()
+
+    expect(wrapper.vm.isMessageShowed).toBe(false)
+    expect(wrapper.find('.message--success').isVisible()).toBe(false)
+  })
 })
