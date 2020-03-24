@@ -1,6 +1,6 @@
 # unit-tests-playground
 
-## 2 view booking app without calendar:
+## 2 views of booking app without calendar:
 
 1. View with all booked meetings
 2. API in other directory with express with responsing true/false on request
