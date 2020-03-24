@@ -54,8 +54,7 @@ describe('AddMeeting page', () => {
     ])
     expect(wrapper.find('#email').exists()).toBe(true)
     expect(wrapper.find('#predefined').exists()).toBe(true)
-    expect(wrapper.find('#start').exists()).toBe(true)
-    expect(wrapper.find('#all-day').exists()).toBe(true)
+    expect(wrapper.find({ ref: 'meetingDate' }).exists()).toBe(true)
     expect(wrapper.find('.add-meeting__button').exists()).toBe(true)
     expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
   })
@@ -117,17 +116,17 @@ describe('AddMeeting page', () => {
     expect(wrapper.find('#email').exists()).toBe(true)
   })
 
-  it('can set custom meeting start in form', async () => {
+  it('can set custom meeting day in form', async () => {
     const wrapper = mount(AddMeeting)
     const todayDateFormat = new Date().toJSON().slice(0, 10)
     await flushPromises()
 
-    expect(wrapper.vm.meetingStart).toBe('')
+    expect(wrapper.vm.meetingDate).toBe('')
 
-    wrapper.find('#start').setValue(todayDateFormat)
+    wrapper.find('#meetingDate').setValue(todayDateFormat)
 
-    expect(wrapper.find('#start').element.value).toBe(todayDateFormat)
-    expect(wrapper.vm.meetingStart).toBe(todayDateFormat)
+    expect(wrapper.find('#meetingDate').element.value).toBe(todayDateFormat)
+    expect(wrapper.vm.meetingDate).toBe(todayDateFormat)
   })
 
   it('min attribute in input date has today date', async () => {
@@ -135,7 +134,7 @@ describe('AddMeeting page', () => {
     const todayDateFormat = new Date().toJSON().slice(0, 10)
     await flushPromises()
 
-    expect(wrapper.find('#start').attributes().min).toBe(todayDateFormat)
+    expect(wrapper.find('#meetingDate').attributes().min).toBe(todayDateFormat)
   })
 
   it('all day checkbox toggle input on field and clear selectedHour', async () => {
@@ -166,8 +165,7 @@ describe('AddMeeting page', () => {
 
     await wrapper.setData({
       email: 'test',
-      allDay: true,
-      meetingStart: '2020-12-12'
+      meetingDate: '2020-12-12'
     })
 
     expect(wrapper.vm.isFormValid).toBe(true)
@@ -184,8 +182,7 @@ describe('AddMeeting page', () => {
 
     await wrapper.setData({
       email: 'test',
-      allDay: true,
-      meetingStart: '2020-12-12'
+      meetingDate: '2020-12-12'
     })
 
     expect(wrapper.vm.isFormValid).toBe(true)
@@ -197,8 +194,7 @@ describe('AddMeeting page', () => {
     await flushPromises()
     await wrapper.setData({
       email: 'test',
-      allDay: true,
-      meetingStart: '2020-12-12'
+      meetingDate: '2020-12-12'
     })
 
     wrapper.find('.add-meeting__button').trigger('click')
@@ -210,7 +206,7 @@ describe('AddMeeting page', () => {
     expect(actions.doReservation).toHaveBeenCalled()
     expect(wrapper.vm.isFormBlocked).toBe(false)
     expect(wrapper.vm.email).toBe('')
-    expect(wrapper.vm.meetingStart).toBe('')
+    expect(wrapper.vm.meetingDate).toBe('')
   })
 
   it('message is showed after button click and hide on @hideMessage event', async () => {
@@ -218,8 +214,7 @@ describe('AddMeeting page', () => {
     await flushPromises()
     await wrapper.setData({
       email: 'test',
-      allDay: true,
-      meetingStart: '2020-12-12'
+      meetingDate: '2020-12-12'
     })
     wrapper.find('.add-meeting__button').trigger('click')
     await flushPromises()

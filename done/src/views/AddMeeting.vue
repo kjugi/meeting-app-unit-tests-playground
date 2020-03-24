@@ -45,13 +45,14 @@
       </div>
 
       <div class="add-meeting__wrapper">
-        <label for="start">
-          Start date
+        <label for="meetingDate">
+          Meeting date
         </label>
 
         <input
-          id="start"
-          v-model="meetingStart"
+          ref="meetingDate"
+          id="meetingDate"
+          v-model="meetingDate"
           type="date"
           class="add-meeting__input"
           :min="getFormattedDate"
@@ -136,7 +137,7 @@ export default {
       email: '',
       options: null,
       selectedPerson: '',
-      meetingStart: '',
+      meetingDate: '',
       selectedHour: '',
       allDay: true,
       isFormBlocked: true,
@@ -161,8 +162,7 @@ export default {
     isFormValid () {
       return (
         (this.email.length > 0 || this.selectedPerson.length > 0) &&
-        (this.allDay || this.selectedHour.length > 0) &&
-        this.meetingStart.length > 0
+        this.meetingDate.length > 0
       ) || false
     },
     showErrorMessage () {
@@ -181,7 +181,7 @@ export default {
         try {
           this.isFormBlocked = true
           const meetingInfo = {
-            date: this.meetingStart
+            date: this.meetingDate,
           }
 
           meetingInfo.who = this.predefined ? this.selectedPerson : this.email
@@ -202,9 +202,8 @@ export default {
           this.isFormBlocked = false
 
           this.clearPersonData()
-          this.allDay = true
+          this.meetingDate = ''
           this.selectedHour = ''
-          this.meetingStart = ''
         }
       }
     },
