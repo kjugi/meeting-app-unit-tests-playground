@@ -41,8 +41,25 @@ describe('AddMeeting page', () => {
   // it('predefined select change value to selected option', () => {
   // })
 
-  // it('predefined checkbox toggle fields and clear values', () => {
-  // })
+  it('predefined checkbox toggle fields and clear values', async () => {
+    const wrapper = mount(AddMeeting)
+    await flushPromises()
+
+    expect(wrapper.vm.predefined).toBe(true)
+
+    await wrapper.find('#predefined').setChecked(false)
+
+    expect(wrapper.vm.predefined).toBe(false)
+
+    wrapper.find('#email').setValue('example value')
+
+    expect(wrapper.vm.email).toBe('example value')
+
+    await wrapper.find('#predefined').setChecked(true)
+
+    expect(wrapper.vm.email).toBe('')
+    expect(wrapper.find('#email').exists()).toBe(true)
+  })
 
   // it('can set custom meeting start in form', () => {
   // })
