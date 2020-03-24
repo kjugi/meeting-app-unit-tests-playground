@@ -15,7 +15,7 @@
 ## Unit tests to write:
 
 1. Message component
-    - renders prop title when passed
+    - renders prop title when passed - READY
     - emit event when isMessageShowed updates
 2. Checkbox component
     - emit events when change checked value
@@ -23,14 +23,14 @@
     - meeting list contains elements from store
     - render empty list message when don\'t have items
 4. Add Meeting view
-    - default form is rendered
+    - default form is rendered - READY
     - has loading class when form is blocked
     - predefined addreses are available
     - predefined select change value to selected option
-    - predefined checkbox toggle fields and clear values
+    - predefined checkbox toggle fields and clear values - READY
     - can set custom meeting day in form
-    - min attribute in input date has today date
-    - error is showed when form is invalid
+    - min attribute in input date has today date - READY
+    - error is showed when form is invalid - READY
     - button can be disable or enabled
     - can add meeting to store
     - message is showed after button click and hide on @hideMessage event
