@@ -18,7 +18,7 @@
     - renders prop title when passed
     - emit event when isMessageShowed updates
 2. Checkbox component
-    - emit events when input on checkbox
+    - emit events when change checked value
 3. Home view
     - meeting list contains elements from store
     - render empty list message when don\'t have items
