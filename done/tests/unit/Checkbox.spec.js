@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import Checkbox from '@/components/Checkbox.vue'
 
 describe('Checkbox.vue', () => {
-  it('emit events when change checked value', async () => {
+  it('emit events when change checked value', () => {
     const wrapper = mount(Checkbox, {
       propsData: {
         id: 'checkbox1',
@@ -11,7 +11,7 @@ describe('Checkbox.vue', () => {
       }
     })
 
-    await wrapper.find('#checkbox1').setChecked()
+    wrapper.find('#checkbox1').setChecked()
 
     expect(wrapper.emitted('change')).toBeDefined()
     expect(wrapper.emitted('change').length).toBe(1)
