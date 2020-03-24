@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import HomePage from '@/views/Home.vue'
 
