@@ -137,26 +137,6 @@ describe('AddMeeting page', () => {
     expect(wrapper.find('#meetingDate').attributes().min).toBe(todayDateFormat)
   })
 
-  it('all day checkbox toggle input on field and clear selectedHour', async () => {
-    const wrapper = mount(AddMeeting)
-    await flushPromises()
-
-    expect(wrapper.vm.allDay).toBe(true)
-
-    await wrapper.find('#all-day').setChecked(false)
-
-    expect(wrapper.vm.allDay).toBe(false)
-
-    wrapper.find('#hour').setValue('12:55')
-
-    expect(wrapper.vm.selectedHour).toBe('12:55')
-
-    await wrapper.find('#all-day').setChecked(true)
-
-    expect(wrapper.vm.selectedHour).toBe('')
-    expect(wrapper.find('#email').exists()).toBe(true)
-  })
-
   it('error is showed when form is invalid', async () => {
     const wrapper = mount(AddMeeting)
 

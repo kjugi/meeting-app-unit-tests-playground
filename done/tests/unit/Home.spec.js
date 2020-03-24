@@ -11,12 +11,10 @@ describe('Home page', () => {
       meetingList: [
         {
           'date': '2020-03-27',
-          'hour': false,
           'who': 'Example Person1'
         },
         {
           'date': '2020-03-27',
-          'hour': '9:50',
           'who': 'Example Person2'
         }
       ]

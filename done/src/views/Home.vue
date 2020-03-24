@@ -15,13 +15,6 @@
 
         <span class="date">
           {{ item.date }}
-
-          <template v-if="item.hour">
-            {{ item.hour }}
-          </template>
-          <template v-else>
-            All day meeting
-          </template>
         </span>
       </div>
     </div>

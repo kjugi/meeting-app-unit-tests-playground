@@ -59,38 +59,6 @@
         />
       </div>
 
-      <div class="add-meeting__wrapper">
-        <checkbox-field
-          id="all-day"
-          v-model="allDay"
-          label="All day meeting? (from 9am to 6pm)"
-          class="add-meeting__field"
-          @change="selectedHour = ''"
-        />
-
-        <div
-          v-if="!allDay"
-          class="add-meeting__field"
-        >
-          <label for="hour">
-            Choose a time for your meeting
-          </label>
-
-          <input
-            id="hour"
-            v-model="selectedHour"
-            type="time"
-            class="add-meeting__input"
-            min="09:00"
-            max="18:00"
-          />
-
-          <small>
-            Office hours are 9am to 6pm
-          </small>
-        </div>
-      </div>
-
       <div class="add-meeting__action-wrapper">
         <button
           class="add-meeting__button"
@@ -138,8 +106,6 @@ export default {
       options: null,
       selectedPerson: '',
       meetingDate: '',
-      selectedHour: '',
-      allDay: true,
       isFormBlocked: true,
       isMessageShowed: false,
       messageTitle: '',
@@ -182,10 +148,8 @@ export default {
           this.isFormBlocked = true
           const meetingInfo = {
             date: this.meetingDate,
+            who: this.predefined ? this.selectedPerson : this.email
           }
-
-          meetingInfo.who = this.predefined ? this.selectedPerson : this.email
-          meetingInfo.hour = this.allDay ? false : this.selectedHour
 
           await axios.post('http://localhost:5679/add', {
             meetingInfo
@@ -203,7 +167,6 @@ export default {
 
           this.clearPersonData()
           this.meetingDate = ''
-          this.selectedHour = ''
         }
       }
     },
