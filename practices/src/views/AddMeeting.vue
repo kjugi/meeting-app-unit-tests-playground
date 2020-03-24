@@ -45,49 +45,18 @@
       </div>
 
       <div class="add-meeting__wrapper">
-        <label for="start">
-          Start date
+        <label for="meetingDate">
+          Meeting date
         </label>
 
         <input
-          id="start"
-          v-model="meetingStart"
+          ref="meetingDate"
+          id="meetingDate"
+          v-model="meetingDate"
           type="date"
           class="add-meeting__input"
           :min="getFormattedDate"
         />
-      </div>
-
-      <div class="add-meeting__wrapper">
-        <checkbox-field
-          id="all-day"
-          v-model="allDay"
-          label="All day meeting? (from 9am to 6pm)"
-          class="add-meeting__field"
-          @change="selectedHour = ''"
-        />
-
-        <div
-          v-if="!allDay"
-          class="add-meeting__field"
-        >
-          <label for="hour">
-            Choose a time for your meeting
-          </label>
-
-          <input
-            id="hour"
-            v-model="selectedHour"
-            type="time"
-            class="add-meeting__input"
-            min="09:00"
-            max="18:00"
-          />
-
-          <small>
-            Office hours are 9am to 6pm
-          </small>
-        </div>
       </div>
 
       <div class="add-meeting__action-wrapper">
@@ -136,9 +105,7 @@ export default {
       email: '',
       options: null,
       selectedPerson: '',
-      meetingStart: '',
-      selectedHour: '',
-      allDay: true,
+      meetingDate: '',
       isFormBlocked: true,
       isMessageShowed: false,
       messageTitle: '',
@@ -161,8 +128,7 @@ export default {
     isFormValid () {
       return (
         (this.email.length > 0 || this.selectedPerson.length > 0) &&
-        (this.allDay || this.selectedHour.length > 0) &&
-        this.meetingStart.length > 0
+        this.meetingDate.length > 0
       ) || false
     },
     showErrorMessage () {
@@ -181,11 +147,9 @@ export default {
         try {
           this.isFormBlocked = true
           const meetingInfo = {
-            date: this.meetingStart
+            date: this.meetingDate,
+            who: this.predefined ? this.selectedPerson : this.email
           }
-
-          meetingInfo.who = this.predefined ? this.selectedPerson : this.email
-          meetingInfo.hour = this.allDay ? false : this.selectedHour
 
           await axios.post('http://localhost:5679/add', {
             meetingInfo
@@ -202,9 +166,7 @@ export default {
           this.isFormBlocked = false
 
           this.clearPersonData()
-          this.allDay = true
-          this.selectedHour = ''
-          this.meetingStart = ''
+          this.meetingDate = ''
         }
       }
     },

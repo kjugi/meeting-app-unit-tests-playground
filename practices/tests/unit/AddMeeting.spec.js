@@ -27,8 +27,7 @@ describe('AddMeeting page', () => {
     ])
     expect(wrapper.find('#email').exists()).toBe(true)
     expect(wrapper.find('#predefined').exists()).toBe(true)
-    expect(wrapper.find('#start').exists()).toBe(true)
-    expect(wrapper.find('#all-day').exists()).toBe(true)
+    expect(wrapper.find({ ref: 'meetingDate' }).exists()).toBe(true)
     expect(wrapper.find('.add-meeting__button').exists()).toBe(true)
     expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
   })
@@ -53,14 +52,23 @@ describe('AddMeeting page', () => {
     const todayDateFormat = new Date().toJSON().slice(0, 10)
     await flushPromises()
 
-    expect(wrapper.find('#start').attributes().min).toBe(todayDateFormat)
+    expect(wrapper.find('#meetingDate').attributes().min).toBe(todayDateFormat)
   })
 
-  // it('all day checkbox toggle input on field and clear selectedHour', () => {
-  // })
+  it('error is showed when form is invalid', async () => {
+    const wrapper = mount(AddMeeting)
 
-  // it('error is showed when form is invalid', () => {
-  // })
+    expect(wrapper.vm.isFormValid).toBe(false)
+    expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
+
+    await wrapper.setData({
+      email: 'test',
+      meetingDate: '2020-12-12'
+    })
+
+    expect(wrapper.vm.isFormValid).toBe(true)
+    expect(wrapper.find('.add-meeting__error').exists()).toBe(false)
+  })
 
   // it('button can be disable or enabled', () => {})
 
