@@ -26,6 +26,26 @@ var appRouter = function (app) {
         {
           text: 'Example Person2',
           value: 'meeting2@gmail.com'
+        },
+        {
+          text: 'Very real example1',
+          value: 'real1@example.com'
+        },
+        {
+          text: 'Very real example2',
+          value: 'real2@gmail.com'
+        },
+        {
+          text: 'Your email',
+          value: 'john.xyz@gmail.com'
+        },
+        {
+          text: 'My email',
+          value: 'bard.xyz@gmail.com'
+        },
+        {
+          text: 'This is just an example',
+          value: 'paul.xyz@gmail.com'
         }
       ]);
     });
