@@ -14,7 +14,6 @@
 
 ## Unit tests to write:
 
-TODO
 1. Message component
     - renders prop title when passed
     - emit event when isMessageShowed updates
@@ -24,17 +23,18 @@ TODO
     - meeting list contains elements from store
     - render empty list message when don\'t have items
 4. Add Meeting view
-    - default form is rendered (143ms)
-    - has loading class when form is blocked (15ms)
-    - predefined addreses are available (19ms)
-    - predefined select change value to selected option (19ms)
-    - predefined checkbox toggle fields and clear values (29ms)
-    - can set custom meeting start in form (11ms)
-    - min attribute in input date has today date (13ms)
-    - all day checkbox toggle input on field and clear selectedHour (22ms)
-    - error is showed when form is invalid (61ms)
-    - button can be disable or enabled (115ms)
-    - can add meeting to store (21ms)
+    - default form is rendered
+    - has loading class when form is blocked
+    - predefined addreses are available
+    - predefined select change value to selected option
+    - predefined checkbox toggle fields and clear values
+    - can set custom meeting day in form
+    - min attribute in input date has today date
+    - error is showed when form is invalid
+    - button can be disable or enabled
+    - can add meeting to store
     - message is showed after button click and hide on @hideMessage event
+
+Other topics which are not ready yet and don't have more time to present
 5. Snapshot testing
 6. Testing vuex store actions and mutations
