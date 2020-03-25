@@ -180,6 +180,7 @@ describe('AddMeeting page', () => {
     wrapper.find('.add-meeting__button').trigger('click')
 
     expect(wrapper.vm.isFormBlocked).toBe(true)
+    // TODO: checking that http://localhost:5679/add post endpoint is called
 
     await flushPromises()
 
