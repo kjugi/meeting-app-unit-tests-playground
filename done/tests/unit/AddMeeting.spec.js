@@ -198,6 +198,7 @@ describe('AddMeeting page', () => {
     })
     wrapper.find('.add-meeting__button').trigger('click')
     await flushPromises()
+    // TODO: checking that http://localhost:5679/add post endpoint is called
 
     expect(wrapper.vm.isMessageShowed).toBe(true)
     expect(wrapper.vm.messageClass).toBe('message--success')
