@@ -1,16 +1,14 @@
 # unit-tests-playground
 
-## 2 views of booking app without calendar:
+## Overview of 2 routes booking app:
 
-1. View with all booked meetings
-2. API in other directory with express with responsing true/false on request
+1. Homepage view with all booked meetings
+2. Simple API in other directory on express
 3. Second view to book meeting:
     - input for email or select with list of people to meet with toggle checkbox
-    - setting date of meeting with hours
-    - checkbox for full day meeting
+    - selecting date of meeting
     - save button
 4. Saving button adds meeting after backend response to booked meetings view
-5. Add unit tests in CI
 
 ## Unit tests to write:
 
