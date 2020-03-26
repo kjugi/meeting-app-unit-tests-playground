@@ -6,17 +6,9 @@ jest.useFakeTimers()
 // jest.runAllTimers()
 
 describe('Message.vue', () => {
-  it('renders prop title when passed', () => {
-    const wrapper = mount(Message, {
-      propsData: {
-        title: 'test title',
-        isMessageShowed: false
-      }
-    })
+  // it('renders prop title when passed', () => {
+  // })
 
-    expect(wrapper.find('h2').text()).toMatch('test title')
-  })
-
-  // it('emit event when isMessageShowed updates', async () => {
+  // it('emit event when isMessageShowed updates', () => {
   // })
 })
