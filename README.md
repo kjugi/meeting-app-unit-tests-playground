@@ -33,6 +33,6 @@
     - can add meeting to store
     - message is showed after button click and hide on @hideMessage event
 
-Other topics which are not ready yet and don't have more time to present
+## Other topics which are not ready yet:
 5. Snapshot testing
 6. Testing vuex store actions and mutations
