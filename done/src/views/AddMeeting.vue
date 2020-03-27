@@ -152,7 +152,7 @@ export default {
           }
 
           await axios.post('http://localhost:5679/add', {
-            meetingInfo
+            ...meetingInfo
           })
 
           this.doReservation(meetingInfo)

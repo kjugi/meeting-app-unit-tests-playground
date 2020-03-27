@@ -85,6 +85,8 @@ describe('AddMeeting page', () => {
 
     await flushPromises()
 
+    expect(axios.get).toHaveBeenCalledWith('http://localhost:5679/users')
+    expect(axios.get).toHaveBeenCalledTimes(1)
     expect(wrapper.vm.isMessageShowed).toBe(false)
     expect(wrapper.vm.messageTitle).toBe('')
     expect(wrapper.vm.options.length).toBe(3)
@@ -179,6 +181,7 @@ describe('AddMeeting page', () => {
     const wrapper = mount(AddMeeting, { store, localVue })
     await flushPromises()
     await wrapper.setData({
+      predefined: false,
       email: 'test',
       meetingDate: '2020-12-12'
     })
@@ -186,10 +189,14 @@ describe('AddMeeting page', () => {
     wrapper.find('.add-meeting__button').trigger('click')
 
     expect(wrapper.vm.isFormBlocked).toBe(true)
-    // TODO: checking that http://localhost:5679/add post endpoint is called
 
     await flushPromises()
 
+    expect(axios.post).toHaveBeenCalledWith('http://localhost:5679/add', {
+      who: 'test',
+      date: '2020-12-12'
+    })
+    expect(axios.post).toHaveBeenCalledTimes(1)
     expect(actions.doReservation).toHaveBeenCalled()
     expect(wrapper.vm.isFormBlocked).toBe(false)
     expect(wrapper.vm.email).toBe('')
@@ -200,13 +207,18 @@ describe('AddMeeting page', () => {
     const wrapper = mount(AddMeeting, { store, localVue })
     await flushPromises()
     await wrapper.setData({
+      predefined: false,
       email: 'test',
       meetingDate: '2020-12-12'
     })
     wrapper.find('.add-meeting__button').trigger('click')
     await flushPromises()
-    // TODO: checking that http://localhost:5679/add post endpoint is called
 
+    expect(axios.post).toHaveBeenCalledWith('http://localhost:5679/add', {
+      who: 'test',
+      date: '2020-12-12'
+    })
+    expect(axios.post).toHaveBeenCalledTimes(1)
     expect(wrapper.vm.isMessageShowed).toBe(true)
     expect(wrapper.vm.messageClass).toBe('message--success')
     expect(wrapper.vm.messageTitle).toBe('Successfully added a new meeting')
