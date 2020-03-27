@@ -9,9 +9,11 @@ v12.16
 
 ## Where we have code - project structure
 
-api/ - directory with our backend and 2 simple endpoints for app
-done/ - directory with ready to run app and all unit tests as an examples
-practices/ - directory with ready to run add but without any test cases finished
+`api/` - directory with our backend and 2 simple endpoints for app
+
+`done/` - directory with ready to run app and all unit tests as an examples
+
+`practices/` - directory with ready to run add but without any test cases finished
 
 ## Start app locally
 
