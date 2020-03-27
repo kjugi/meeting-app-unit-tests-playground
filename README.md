@@ -7,6 +7,12 @@ $ node -v
 v12.16
 ```
 
+## Where we have code - project structure
+
+api/ - directory with our backend and 2 simple endpoints for app
+done/ - directory with ready to run app and all unit tests as an examples
+practices/ - directory with ready to run add but without any test cases finished
+
 ## Start app locally
 
 Each directory has own `package.json` file which contains informations about scripts. Hoever here is a list to start API from `api/` directory and app from `done/` directory:
@@ -79,3 +85,15 @@ jest tests/unit/Home.spec.js
 ## Other topics which are not ready yet:
 5. Snapshot testing
 6. Testing vuex store actions and mutations
+
+## Found a bug or repo needs update? - contribute
+
+If you found some problem with API or meeting app please create an issue or PR with changes
+
+## Have a problem?
+
+Open an issue or search in existing ones
+
+## License
+
+Over MIT License
