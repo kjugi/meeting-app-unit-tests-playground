@@ -1,0 +1,21 @@
+version: 2.1
+jobs:
+  unit-tests:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run:
+          name: Go to directory
+          command: cd done
+      - run:
+          name: Install dependencies with yarn
+          command: yarn
+      - run:
+          name: Run unit tests
+          command: yarn test:unit
+
+workflows:
+  unit-tests:
+    jobs:
+      - unit-tests
