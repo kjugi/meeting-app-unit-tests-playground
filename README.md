@@ -1,5 +1,48 @@
 # unit-tests-playground
 
+## Requirements
+
+```
+$ node -v
+v12.16
+```
+
+## Start app locally
+
+Each directory has own `package.json` file which contains informations about scripts. Hoever here is a list to start API from `api/` directory and app from `done/` directory:
+
+First CLI tab:
+```
+cd api && yarn && yarn start
+```
+
+Second CLI tab:
+```
+cd done && yarn && yarn serve
+```
+
+After that API should be available on `http://localhost:5679`
+And app should be available on `http://localhost:8080`
+
+## Run tests
+
+From `done/` directory
+```
+yarn test:unit
+```
+
+Same command is in `/practices` directory
+
+To run single test file from `done/` directory:
+```
+jest path/to/test/file.spec.js
+```
+
+Real example:
+```
+jest tests/unit/Home.spec.js
+```
+
 ## Overview of 2 routes booking app:
 
 1. Homepage view with all booked meetings
