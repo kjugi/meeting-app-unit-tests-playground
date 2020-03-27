@@ -1,8 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import axios from 'axios'
-// Check for more: https://github.com/ctimmerm/axios-mock-adapter#axios-mock-adapter
-import MockArapter from 'axios-mock-adapter'
 // Check for more: https://github.com/kentor/flush-promises
 // or if you don't want to add external lib: https://github.com/kentor/flush-promises/blob/master/index.js
 import flushPromises from 'flush-promises'
@@ -11,6 +9,9 @@ import AddMeeting from '@/views/AddMeeting.vue'
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
+// Check for more: https://jestjs.io/docs/en/mock-functions.html
+// Alternative for mocking requests: https://github.com/ctimmerm/axios-mock-adapter
+jest.mock('axios')
 // Check for more: https://jestjs.io/docs/en/timer-mocks
 jest.useFakeTimers()
 
@@ -26,23 +27,28 @@ describe('AddMeeting page', () => {
       actions
     })
 
-    const mock = new MockArapter(axios)
-
-    mock.onGet('http://localhost:5679/users').reply(200, [
-      {
-        text: 'test',
-        value: 'example@o2.pl'
-      },
-      {
-        text: 'Example Person1',
-        value: 'meeting1@gmail.com'
-      },
-      {
-        text: 'Example Person2',
-        value: 'meeting2@gmail.com'
-      }
-    ])
-    mock.onPost('http://localhost:5679/add').reply(200, true)
+    const response = {
+      data: [
+        {
+          text: 'test',
+          value: 'example@o2.pl'
+        },
+        {
+          text: 'Example Person1',
+          value: 'meeting1@gmail.com'
+        },
+        {
+          text: 'Example Person2',
+          value: 'meeting2@gmail.com'
+        }
+      ]
+    }
+    // Check for more: https://jestjs.io/docs/en/mock-function-api.html
+    // Auto clearMock: https://jestjs.io/docs/en/configuration.html#clearmocks-boolean
+    axios.get.mockClear()
+    axios.post.mockClear()
+    // Resolving /users endpoint
+    axios.get.mockResolvedValue(response)
   })
 
   it('default form is rendered', () => {
