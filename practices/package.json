@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "axios-mock-adapter": "^1.18.1",
     "core-js": "^3.6.4",
+    "flush-promises": "^1.0.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
     "vuex": "^3.1.2"
