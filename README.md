@@ -85,8 +85,9 @@ jest tests/unit/Home.spec.js
     - message is showed after button click and hide on @hideMessage event
 
 ## Other topics which are not ready yet:
-5. Snapshot testing
-6. Testing vuex store actions and mutations
+5. Add factory to test cases as simplify of syntax and good practice
+6. Snapshot testing
+7. Testing vuex store actions and mutations
 
 ## Found a bug or repo needs update? - contribute
 
