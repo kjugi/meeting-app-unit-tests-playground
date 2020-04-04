@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "flush-promises": "^1.0.2",
+    "jest-serializer-vue": "^2.0.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"
