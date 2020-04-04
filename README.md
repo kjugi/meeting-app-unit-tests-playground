@@ -84,8 +84,19 @@ jest tests/unit/Home.spec.js
     - can add meeting to store
     - message is showed after button click and hide on @hideMessage event
 
+
+## Covered topics and good practices in this repo:
+- Basic tests
+- Mocking functions (axios)
+- Testing mocked API responses
+- Mocking vuex store
+- Timer mocks
+- Factory functions
+- Emitt events testing
+- async testing syntax
+- Both side component testing
+
 ## Other topics which are not ready yet:
-5. Add factory to test cases as simplify of syntax and good practice
 6. Snapshot testing
 7. Testing vuex store actions and mutations
 
