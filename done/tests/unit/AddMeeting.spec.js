@@ -15,18 +15,19 @@ jest.mock('axios')
 // Check for more: https://jestjs.io/docs/en/timer-mocks
 jest.useFakeTimers()
 
+const factory = (options = {}) => {
+  return mount(AddMeeting, {...options})
+}
+
+const createStore = (actions = {}) => {
+  return new Vuex.Store({
+    state: {},
+    actions
+  })
+}
+
 describe('AddMeeting page', () => {
-  let actions
-  let store
-
   beforeEach(() => {
-    actions = {
-      doReservation: jest.fn()
-    }
-    store = new Vuex.Store({
-      actions
-    })
-
     const response = {
       data: [
         {
@@ -52,7 +53,7 @@ describe('AddMeeting page', () => {
   })
 
   it('default form is rendered', () => {
-    const wrapper = mount(AddMeeting)
+    const wrapper = factory()
 
     expect(wrapper.classes()).toStrictEqual([
       'add-meeting',
@@ -66,7 +67,7 @@ describe('AddMeeting page', () => {
   })
 
   it('has loading class when form is blocked', async () => {
-    const wrapper = mount(AddMeeting)
+    const wrapper = factory()
 
     expect(wrapper.vm.isFormBlocked).toBe(true)
     expect(wrapper.classes('add-meeting--loading')).toBe(true)
@@ -79,7 +80,7 @@ describe('AddMeeting page', () => {
   })
 
   it('predefined addreses are available', async () => {
-    const wrapper = mount(AddMeeting)
+    const wrapper = factory()
 
     expect(wrapper.vm.options).toBeNull()
 
@@ -94,7 +95,7 @@ describe('AddMeeting page', () => {
   })
 
   it('predefined select change value to selected option', async () => {
-    const wrapper = mount(AddMeeting)
+    const wrapper = factory()
     await flushPromises()
 
     expect(wrapper.vm.selectedPerson).toBe('')
@@ -105,7 +106,7 @@ describe('AddMeeting page', () => {
   })
 
   it('predefined checkbox toggle fields and clear values', async () => {
-    const wrapper = mount(AddMeeting)
+    const wrapper = factory()
     await flushPromises()
 
     expect(wrapper.vm.predefined).toBe(true)
@@ -125,7 +126,7 @@ describe('AddMeeting page', () => {
   })
 
   it('can set custom meeting day in form', async () => {
-    const wrapper = mount(AddMeeting)
+    const wrapper = factory()
     const todayDateFormat = new Date().toJSON().slice(0, 10)
     await flushPromises()
 
@@ -138,7 +139,7 @@ describe('AddMeeting page', () => {
   })
 
   it('min attribute in input date has today date', async () => {
-    const wrapper = mount(AddMeeting)
+    const wrapper = factory()
     const todayDateFormat = new Date().toJSON().slice(0, 10)
     await flushPromises()
 
@@ -146,7 +147,7 @@ describe('AddMeeting page', () => {
   })
 
   it('error is showed when form is invalid', async () => {
-    const wrapper = mount(AddMeeting)
+    const wrapper = factory()
 
     expect(wrapper.vm.isFormValid).toBe(false)
     expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
@@ -161,7 +162,7 @@ describe('AddMeeting page', () => {
   })
 
   it('button can be disable or enabled', async () => {
-    const wrapper = mount(AddMeeting)
+    const wrapper = factory()
     await flushPromises()
 
     expect(wrapper.vm.isFormValid).toBe(false)
@@ -178,7 +179,11 @@ describe('AddMeeting page', () => {
   })
 
   it('can add meeting to store', async () => {
-    const wrapper = mount(AddMeeting, { store, localVue })
+    const actions = {
+      doReservation: jest.fn()
+    }
+    const localStore = createStore(actions)
+    const wrapper = factory({ store: localStore, localVue })
     await flushPromises()
     await wrapper.setData({
       predefined: false,
@@ -204,7 +209,10 @@ describe('AddMeeting page', () => {
   })
 
   it('message is showed after button click and hide on @hideMessage event', async () => {
-    const wrapper = mount(AddMeeting, { store, localVue })
+    const localStore = createStore({
+      doReservation: jest.fn()
+    })
+    const wrapper = factory({ store: localStore, localVue })
     await flushPromises()
     await wrapper.setData({
       predefined: false,
