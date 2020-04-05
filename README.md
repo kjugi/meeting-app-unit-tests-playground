@@ -97,6 +97,7 @@ jest tests/unit/Home.spec.js
 - Both side component testing
 
 ## Other topics which are not ready yet:
+5.1. Split factory functions from store and app to separate files and import when necessary. Build one huge factory function with all needed params to split
 6. Snapshot testing
 7. Testing vuex store actions and mutations
 
