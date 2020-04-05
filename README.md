@@ -98,7 +98,7 @@ jest tests/unit/Home.spec.js
 
 ## Other topics which are not ready yet:
 5.1. Split factory functions from store and app to separate files and import when necessary. Build one huge factory function with all needed params to split
-6. Snapshot testing
+6. Snapshot testing and acceptance tests
 7. Testing vuex store actions and mutations
 
 ## Found a bug or repo needs update? - contribute
