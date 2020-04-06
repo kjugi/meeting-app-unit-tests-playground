@@ -66,8 +66,10 @@ jest tests/unit/Home.spec.js
 1. Message component
     - renders prop title when passed
     - emit event when isMessageShowed updates
+    - default component matches snapshot
 2. Checkbox component
     - emit events when change checked value
+    - default component matches snapshot
 3. Home view
     - meeting list contains elements from store
     - render empty list message when don\'t have items

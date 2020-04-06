@@ -11,4 +11,7 @@ describe('Message.vue', () => {
 
   // it('emit event when isMessageShowed updates', () => {
   // })
+
+  // it('default component matches snapshot', () => {
+  // })
 })
