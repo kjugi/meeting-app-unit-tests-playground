@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page meeting list contains elements from store 1`] = `
+<div class="home">
+  <div class="home__list">
+    <div class="home__item">
+      <h2>
+        Example Person1
+      </h2> <span class="date">
+        2020-03-27
+      </span>
+    </div>
+    <div class="home__item">
+      <h2>
+        Example Person2
+      </h2> <span class="date">
+        2020-03-27
+      </span>
+    </div>
+  </div>
+</div>
+`;
