@@ -33,4 +33,10 @@ describe('Message.vue', () => {
     expect(wrapper.emitted('hideMessage').length).toBe(1)
     expect(wrapper.emitted('hideMessage')[0]).toEqual([])
   })
+
+  it('default component matches snapshot', () => {
+    const wrapper = factory()
+
+    expect(wrapper).toMatchSnapshot()
+  })
 })
