@@ -90,6 +90,7 @@ describe('AddMeeting page', () => {
   })
 
   it('predefined addreses are available', async () => {
+    // TODO: Rethink acceptance tests here
     const wrapper = factory()
 
     expect(wrapper.vm.options).toBeNull()
@@ -137,6 +138,7 @@ describe('AddMeeting page', () => {
   })
 
   it('can set custom meeting day in form', async () => {
+    // TODO: Rethink acceptance tests here
     const wrapper = factory()
     const todayDateFormat = new Date().toJSON().slice(0, 10)
     await flushPromises()
@@ -158,6 +160,7 @@ describe('AddMeeting page', () => {
   })
 
   it('error is showed when form is invalid', async () => {
+    // TODO: Rethink acceptance tests here
     const wrapper = factory()
 
     expect(wrapper.vm.isFormValid).toBe(false)
@@ -173,6 +176,7 @@ describe('AddMeeting page', () => {
   })
 
   it('button can be disable or enabled', async () => {
+    // TODO: Rethink acceptance tests here
     const wrapper = factory()
     await flushPromises()
 
