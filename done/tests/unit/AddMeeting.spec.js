@@ -116,6 +116,7 @@ describe('AddMeeting page', () => {
   })
 
   it('predefined checkbox toggle fields and clear values', async () => {
+    // TODO: Rething acceptance tests here
     const wrapper = factory()
     await flushPromises()
 
