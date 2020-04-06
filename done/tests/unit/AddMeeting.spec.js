@@ -64,6 +64,7 @@ describe('AddMeeting page', () => {
     expect(wrapper.find({ ref: 'meetingDate' }).exists()).toBe(true)
     expect(wrapper.find('.add-meeting__button').exists()).toBe(true)
     expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
+    expect(wrapper).toMatchSnapshot()
   })
 
   it('has loading class when form is blocked', async () => {
