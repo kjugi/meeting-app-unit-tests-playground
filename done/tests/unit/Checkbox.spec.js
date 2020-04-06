@@ -21,7 +21,7 @@ describe('Checkbox.vue', () => {
     expect(wrapper.emitted('input')[0][0]).toEqual(true)
   })
 
-  it('renders correctly', () => {
+  it('default component matches snapshot', () => {
     const wrapper = mount(Checkbox, {
       propsData: {
         id: 'checkbox1',
