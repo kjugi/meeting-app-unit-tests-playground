@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkbox.vue renders correctly 1`] = `
+exports[`Checkbox.vue default component matches snapshot 1`] = `
 <div class="checkbox"><label for="checkbox1">
     label prop
   </label> <input id="checkbox1" type="checkbox"></div>
