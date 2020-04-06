@@ -1,4 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils'
+import snapshotDiff from 'snapshot-diff'
 import Vuex from 'vuex'
 import axios from 'axios'
 // Check for more: https://github.com/kentor/flush-promises
@@ -27,6 +28,9 @@ const createStore = (actions = {}) => {
 }
 
 describe('AddMeeting page', () => {
+  let present
+  let next
+
   beforeEach(() => {
     const response = {
       data: [
@@ -70,14 +74,19 @@ describe('AddMeeting page', () => {
   it('has loading class when form is blocked', async () => {
     const wrapper = factory()
 
+    present = wrapper.html()
+
+    expect(present).toMatchSnapshot()
     expect(wrapper.vm.isFormBlocked).toBe(true)
     expect(wrapper.classes('add-meeting--loading')).toBe(true)
 
     await flushPromises()
     wrapper.setData({ isFormBlocked: false })
+    next = wrapper.html()
 
     expect(wrapper.vm.isFormBlocked).toBe(false)
     expect(wrapper.classes('add-meeting--loading')).toBe(false)
+    expect(snapshotDiff(present, next)).toMatchSnapshot()
   })
 
   it('predefined addreses are available', async () => {
@@ -185,18 +194,28 @@ describe('AddMeeting page', () => {
     }
     const localStore = createStore(actions)
     const wrapper = factory({ store: localStore, localVue })
+
+    present = wrapper.html()
+
+    expect(present).toMatchSnapshot()
+
     await flushPromises()
     await wrapper.setData({
       predefined: false,
       email: 'test',
       meetingDate: '2020-12-12'
     })
+    next = wrapper.html()
 
+    expect(snapshotDiff(present, next)).toMatchSnapshot()
+
+    present = next
     wrapper.find('.add-meeting__button').trigger('click')
 
     expect(wrapper.vm.isFormBlocked).toBe(true)
 
     await flushPromises()
+    next = wrapper.html()
 
     expect(axios.post).toHaveBeenCalledWith('http://localhost:5679/add', {
       who: 'test',
@@ -207,6 +226,7 @@ describe('AddMeeting page', () => {
     expect(wrapper.vm.isFormBlocked).toBe(false)
     expect(wrapper.vm.email).toBe('')
     expect(wrapper.vm.meetingDate).toBe('')
+    expect(snapshotDiff(present, next)).toMatchSnapshot()
   })
 
   it('message is showed after button click and hide on @hideMessage event', async () => {
@@ -214,6 +234,7 @@ describe('AddMeeting page', () => {
       doReservation: jest.fn()
     })
     const wrapper = factory({ store: localStore, localVue })
+
     await flushPromises()
     await wrapper.setData({
       predefined: false,
