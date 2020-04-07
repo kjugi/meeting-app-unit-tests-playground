@@ -76,9 +76,9 @@ describe('AddMeeting page', () => {
 
     present = wrapper.html()
 
-    expect(present).toMatchSnapshot()
     expect(wrapper.vm.isFormBlocked).toBe(true)
     expect(wrapper.classes('add-meeting--loading')).toBe(true)
+    expect(present).toMatchSnapshot()
 
     await flushPromises()
     wrapper.setData({ isFormBlocked: false })
@@ -199,7 +199,6 @@ describe('AddMeeting page', () => {
     }
     const localStore = createStore(actions)
     const wrapper = factory({ store: localStore, localVue })
-
     present = wrapper.html()
 
     expect(present).toMatchSnapshot()
@@ -214,11 +213,11 @@ describe('AddMeeting page', () => {
 
     expect(snapshotDiff(present, next)).toMatchSnapshot()
 
-    present = next
     wrapper.find('.add-meeting__button').trigger('click')
 
     expect(wrapper.vm.isFormBlocked).toBe(true)
 
+    present = next
     await flushPromises()
     next = wrapper.html()
 
