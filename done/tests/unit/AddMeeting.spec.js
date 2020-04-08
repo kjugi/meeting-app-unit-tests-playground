@@ -2,6 +2,7 @@ import { mount, createLocalVue } from '@vue/test-utils'
 import snapshotDiff from 'snapshot-diff'
 import Vuex from 'vuex'
 import axios from 'axios'
+import { advanceTo, clear } from 'jest-date-mock'
 // Check for more: https://github.com/kentor/flush-promises
 // or if you don't want to add external lib: https://github.com/kentor/flush-promises/blob/master/index.js
 import flushPromises from 'flush-promises'
@@ -32,6 +33,9 @@ describe('AddMeeting page', () => {
   let next
 
   beforeEach(() => {
+    // Mocking computed is possible but not recommended and it's better to mock JS method
+    advanceTo(new Date('2000-01-01T00:00:05Z'))
+
     const response = {
       data: [
         {
@@ -288,5 +292,10 @@ describe('AddMeeting page', () => {
 
     expect(wrapper.vm.isMessageShowed).toBe(false)
     expect(wrapper.find('.message--success').isVisible()).toBe(false)
+  })
+
+  afterEach(() => {
+    // Clering data mock after test
+    clear()
   })
 })

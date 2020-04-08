@@ -1,5 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AddMeeting page button can be disable or enabled 1`] = `
+<div class="add-meeting">
+  <div class="add-meeting__container">
+    <h1>Add meeting</h1>
+    <div class="add-meeting__wrapper">
+      <div class="add-meeting__field"><label for="email">
+          Choose person to meet
+        </label> <select id="email" class="add-meeting__input">
+          <option value="" selected="selected"></option>
+          <option>
+            test
+          </option>
+          <option>
+            Example Person1
+          </option>
+          <option>
+            Example Person2
+          </option>
+        </select></div>
+      <div class="checkbox add-meeting__field"><label for="predefined">
+          Predefined?
+        </label> <input id="predefined" type="checkbox"></div>
+    </div>
+    <div class="add-meeting__wrapper"><label for="meetingDate">
+        Meeting date
+      </label> <input id="meetingDate" type="date" min="2000-01-01" class="add-meeting__input"></div>
+    <div class="add-meeting__action-wrapper"><button disabled="disabled" class="add-meeting__button">
+        Save meeting
+      </button>
+      <p class="add-meeting__error">
+        You've got a problem in form
+      </p>
+    </div>
+  </div>
+  <div class="message" style="display: none;">
+    <h2>
+
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`AddMeeting page button can be disable or enabled 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -21,16 +21,14 @@
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+      </div>
+      <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">
+          Meeting date
+        </label> <input id=\\"meetingDate\\" type=\\"date\\" min=\\"2000-01-01\\" class=\\"add-meeting__input\\"></div>
+-     <div class=\\"add-meeting__action-wrapper\\"><button disabled=\\"disabled\\" class=\\"add-meeting__button\\">
++     <div class=\\"add-meeting__action-wrapper\\"><button class=\\"add-meeting__button\\">
+          Save meeting
+        </button>
+-       <p class=\\"add-meeting__error\\">
+-         You've got a problem in form
+-       </p>
++       <!---->
+      </div>
+    </div>
+    <div class=\\"message\\" style=\\"display: none;\\">
+      <h2>
+"
+`;
+
 exports[`AddMeeting page can add meeting to store 1`] = `
 <div class="add-meeting add-meeting--loading">
   <div class="add-meeting__container">
@@ -16,7 +84,7 @@ exports[`AddMeeting page can add meeting to store 1`] = `
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
-      </label> <input id="meetingDate" type="date" min="2020-04-06" class="add-meeting__input"></div>
+      </label> <input id="meetingDate" type="date" min="2000-01-01" class="add-meeting__input"></div>
     <div class="add-meeting__action-wrapper"><button disabled="disabled" class="add-meeting__button">
         Save meeting
       </button>
@@ -56,7 +124,7 @@ exports[`AddMeeting page can add meeting to store 2`] = `
       </div>
       <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">
           Meeting date
-        </label> <input id=\\"meetingDate\\" type=\\"date\\" min=\\"2020-04-06\\" class=\\"add-meeting__input\\"></div>
+        </label> <input id=\\"meetingDate\\" type=\\"date\\" min=\\"2000-01-01\\" class=\\"add-meeting__input\\"></div>
 -     <div class=\\"add-meeting__action-wrapper\\"><button disabled=\\"disabled\\" class=\\"add-meeting__button\\">
 +     <div class=\\"add-meeting__action-wrapper\\"><button class=\\"add-meeting__button\\">
           Save meeting
@@ -82,7 +150,7 @@ exports[`AddMeeting page can add meeting to store 3`] = `
       </div>
       <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">
           Meeting date
-        </label> <input id=\\"meetingDate\\" type=\\"date\\" min=\\"2020-04-06\\" class=\\"add-meeting__input\\"></div>
+        </label> <input id=\\"meetingDate\\" type=\\"date\\" min=\\"2000-01-01\\" class=\\"add-meeting__input\\"></div>
 -     <div class=\\"add-meeting__action-wrapper\\"><button class=\\"add-meeting__button\\">
 +     <div class=\\"add-meeting__action-wrapper\\"><button class=\\"add-meeting__button\\" disabled=\\"disabled\\">
           Save meeting
@@ -103,6 +171,53 @@ exports[`AddMeeting page can add meeting to store 3`] = `
   </div>"
 `;
 
+exports[`AddMeeting page can set custom meeting day in form 1`] = `
+<div class="add-meeting">
+  <div class="add-meeting__container">
+    <h1>Add meeting</h1>
+    <div class="add-meeting__wrapper">
+      <div class="add-meeting__field"><label for="email">
+          Choose person to meet
+        </label> <select id="email" class="add-meeting__input">
+          <option value="" selected="selected"></option>
+          <option>
+            test
+          </option>
+          <option>
+            Example Person1
+          </option>
+          <option>
+            Example Person2
+          </option>
+        </select></div>
+      <div class="checkbox add-meeting__field"><label for="predefined">
+          Predefined?
+        </label> <input id="predefined" type="checkbox"></div>
+    </div>
+    <div class="add-meeting__wrapper"><label for="meetingDate">
+        Meeting date
+      </label> <input id="meetingDate" type="date" min="2000-01-01" class="add-meeting__input"></div>
+    <div class="add-meeting__action-wrapper"><button disabled="disabled" class="add-meeting__button">
+        Save meeting
+      </button>
+      <p class="add-meeting__error">
+        You've got a problem in form
+      </p>
+    </div>
+  </div>
+  <div class="message" style="display: none;">
+    <h2>
+
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`AddMeeting page can set custom meeting day in form 2`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;
+
 exports[`AddMeeting page default form is rendered 1`] = `
 <div class="add-meeting add-meeting--loading">
   <div class="add-meeting__container">
@@ -119,7 +234,7 @@ exports[`AddMeeting page default form is rendered 1`] = `
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
-      </label> <input id="meetingDate" type="date" min="2020-04-06" class="add-meeting__input"></div>
+      </label> <input id="meetingDate" type="date" min="2000-01-01" class="add-meeting__input"></div>
     <div class="add-meeting__action-wrapper"><button disabled="disabled" class="add-meeting__button">
         Save meeting
       </button>
@@ -134,6 +249,61 @@ exports[`AddMeeting page default form is rendered 1`] = `
     </h2>
   </div>
 </div>
+`;
+
+exports[`AddMeeting page error is showed when form is invalid 1`] = `
+<div class="add-meeting add-meeting--loading">
+  <div class="add-meeting__container">
+    <h1>Add meeting</h1>
+    <div class="add-meeting__wrapper">
+      <div class="add-meeting__field"><label for="email">
+          Choose person to meet
+        </label> <select id="email" class="add-meeting__input">
+          <option value="" selected="selected"></option>
+        </select></div>
+      <div class="checkbox add-meeting__field"><label for="predefined">
+          Predefined?
+        </label> <input id="predefined" type="checkbox"></div>
+    </div>
+    <div class="add-meeting__wrapper"><label for="meetingDate">
+        Meeting date
+      </label> <input id="meetingDate" type="date" min="2000-01-01" class="add-meeting__input"></div>
+    <div class="add-meeting__action-wrapper"><button disabled="disabled" class="add-meeting__button">
+        Save meeting
+      </button>
+      <p class="add-meeting__error">
+        You've got a problem in form
+      </p>
+    </div>
+  </div>
+  <div class="message" style="display: none;">
+    <h2>
+
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`AddMeeting page error is showed when form is invalid 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -15,13 +15,11 @@
+          Meeting date
+        </label> <input id=\\"meetingDate\\" type=\\"date\\" min=\\"2000-01-01\\" class=\\"add-meeting__input\\"></div>
+      <div class=\\"add-meeting__action-wrapper\\"><button disabled=\\"disabled\\" class=\\"add-meeting__button\\">
+          Save meeting
+        </button>
+-       <p class=\\"add-meeting__error\\">
+-         You've got a problem in form
+-       </p>
++       <!---->
+      </div>
+    </div>
+    <div class=\\"message\\" style=\\"display: none;\\">
+      <h2>
+"
 `;
 
 exports[`AddMeeting page has loading class when form is blocked 1`] = `
@@ -152,7 +322,7 @@ exports[`AddMeeting page has loading class when form is blocked 1`] = `
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
-      </label> <input id="meetingDate" type="date" min="2020-04-06" class="add-meeting__input"></div>
+      </label> <input id="meetingDate" type="date" min="2000-01-01" class="add-meeting__input"></div>
     <div class="add-meeting__action-wrapper"><button disabled="disabled" class="add-meeting__button">
         Save meeting
       </button>
@@ -198,4 +368,224 @@ exports[`AddMeeting page has loading class when form is blocked 2`] = `
             Predefined?
           </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
       </div>"
+`;
+
+exports[`AddMeeting page predefined addreses are available 1`] = `
+<div class="add-meeting add-meeting--loading">
+  <div class="add-meeting__container">
+    <h1>Add meeting</h1>
+    <div class="add-meeting__wrapper">
+      <div class="add-meeting__field"><label for="email">
+          Choose person to meet
+        </label> <select id="email" class="add-meeting__input">
+          <option value="" selected="selected"></option>
+        </select></div>
+      <div class="checkbox add-meeting__field"><label for="predefined">
+          Predefined?
+        </label> <input id="predefined" type="checkbox"></div>
+    </div>
+    <div class="add-meeting__wrapper"><label for="meetingDate">
+        Meeting date
+      </label> <input id="meetingDate" type="date" min="2000-01-01" class="add-meeting__input"></div>
+    <div class="add-meeting__action-wrapper"><button disabled="disabled" class="add-meeting__button">
+        Save meeting
+      </button>
+      <p class="add-meeting__error">
+        You've got a problem in form
+      </p>
+    </div>
+  </div>
+  <div class="message" style="display: none;">
+    <h2>
+
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`AddMeeting page predefined addreses are available 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,13 +1,22 @@
+- <div class=\\"add-meeting add-meeting--loading\\">
++ <div class=\\"add-meeting\\">
+    <div class=\\"add-meeting__container\\">
+      <h1>Add meeting</h1>
+      <div class=\\"add-meeting__wrapper\\">
+        <div class=\\"add-meeting__field\\"><label for=\\"email\\">
+            Choose person to meet
+          </label> <select id=\\"email\\" class=\\"add-meeting__input\\">
+            <option value=\\"\\" selected=\\"selected\\"></option>
++           <option>
++             test
++           </option>
++           <option>
++             Example Person1
++           </option>
++           <option>
++             Example Person2
++           </option>
+          </select></div>
+        <div class=\\"checkbox add-meeting__field\\"><label for=\\"predefined\\">
+            Predefined?
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+      </div>"
+`;
+
+exports[`AddMeeting page predefined checkbox toggle fields and clear values 1`] = `
+<div class="add-meeting">
+  <div class="add-meeting__container">
+    <h1>Add meeting</h1>
+    <div class="add-meeting__wrapper">
+      <div class="add-meeting__field"><label for="email">
+          Choose person to meet
+        </label> <select id="email" class="add-meeting__input">
+          <option value="" selected="selected"></option>
+          <option>
+            test
+          </option>
+          <option>
+            Example Person1
+          </option>
+          <option>
+            Example Person2
+          </option>
+        </select></div>
+      <div class="checkbox add-meeting__field"><label for="predefined">
+          Predefined?
+        </label> <input id="predefined" type="checkbox"></div>
+    </div>
+    <div class="add-meeting__wrapper"><label for="meetingDate">
+        Meeting date
+      </label> <input id="meetingDate" type="date" min="2000-01-01" class="add-meeting__input"></div>
+    <div class="add-meeting__action-wrapper"><button disabled="disabled" class="add-meeting__button">
+        Save meeting
+      </button>
+      <p class="add-meeting__error">
+        You've got a problem in form
+      </p>
+    </div>
+  </div>
+  <div class="message" style="display: none;">
+    <h2>
+
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`AddMeeting page predefined checkbox toggle fields and clear values 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -2,22 +2,11 @@
+    <div class=\\"add-meeting__container\\">
+      <h1>Add meeting</h1>
+      <div class=\\"add-meeting__wrapper\\">
+        <div class=\\"add-meeting__field\\"><label for=\\"email\\">
+            Choose person to meet
+-         </label> <select id=\\"email\\" class=\\"add-meeting__input\\">
+-           <option value=\\"\\" selected=\\"selected\\"></option>
+-           <option>
+-             test
+-           </option>
+-           <option>
+-             Example Person1
+-           </option>
+-           <option>
+-             Example Person2
+-           </option>
+-         </select></div>
++         </label> <input id=\\"email\\" type=\\"text\\" placeholder=\\"Email address\\" class=\\"add-meeting__input\\"></div>
+        <div class=\\"checkbox add-meeting__field\\"><label for=\\"predefined\\">
+            Predefined?
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+      </div>
+      <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">"
+`;
+
+exports[`AddMeeting page predefined checkbox toggle fields and clear values 3`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;
+
+exports[`AddMeeting page predefined checkbox toggle fields and clear values 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -2,11 +2,22 @@
+    <div class=\\"add-meeting__container\\">
+      <h1>Add meeting</h1>
+      <div class=\\"add-meeting__wrapper\\">
+        <div class=\\"add-meeting__field\\"><label for=\\"email\\">
+            Choose person to meet
+-         </label> <input id=\\"email\\" type=\\"text\\" placeholder=\\"Email address\\" class=\\"add-meeting__input\\"></div>
++         </label> <select id=\\"email\\" class=\\"add-meeting__input\\">
++           <option value=\\"\\" selected=\\"selected\\"></option>
++           <option>
++             test
++           </option>
++           <option>
++             Example Person1
++           </option>
++           <option>
++             Example Person2
++           </option>
++         </select></div>
+        <div class=\\"checkbox add-meeting__field\\"><label for=\\"predefined\\">
+            Predefined?
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+      </div>
+      <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">"
+`;
+
+exports[`AddMeeting page predefined select change value to selected option 1`] = `
+<div class="add-meeting">
+  <div class="add-meeting__container">
+    <h1>Add meeting</h1>
+    <div class="add-meeting__wrapper">
+      <div class="add-meeting__field"><label for="email">
+          Choose person to meet
+        </label> <select id="email" class="add-meeting__input">
+          <option value="" selected="selected"></option>
+          <option>
+            test
+          </option>
+          <option>
+            Example Person1
+          </option>
+          <option>
+            Example Person2
+          </option>
+        </select></div>
+      <div class="checkbox add-meeting__field"><label for="predefined">
+          Predefined?
+        </label> <input id="predefined" type="checkbox"></div>
+    </div>
+    <div class="add-meeting__wrapper"><label for="meetingDate">
+        Meeting date
+      </label> <input id="meetingDate" type="date" min="2000-01-01" class="add-meeting__input"></div>
+    <div class="add-meeting__action-wrapper"><button disabled="disabled" class="add-meeting__button">
+        Save meeting
+      </button>
+      <p class="add-meeting__error">
+        You've got a problem in form
+      </p>
+    </div>
+  </div>
+  <div class="message" style="display: none;">
+    <h2>
+
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`AddMeeting page predefined select change value to selected option 2`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
 `;
