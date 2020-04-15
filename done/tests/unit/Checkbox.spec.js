@@ -1,19 +1,15 @@
-import { mount } from '@vue/test-utils'
+import { createWrapper } from '../factory'
 import Checkbox from '@/components/Checkbox.vue'
 
-const factory = () => {
-  return mount(Checkbox, {
-    propsData: {
-      id: 'checkbox1',
-      label: 'label prop',
-      value: false
-    }
-  })
+const propsData = {
+  id: 'checkbox1',
+  label: 'label prop',
+  value: false
 }
 
 describe('Checkbox.vue', () => {
   it('emit events when change checked value', () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(Checkbox, { propsData })
 
     wrapper.find('#checkbox1').setChecked()
 
@@ -26,7 +22,7 @@ describe('Checkbox.vue', () => {
   })
 
   it('default component matches snapshot', () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(Checkbox, { propsData })
 
     expect(wrapper).toMatchSnapshot()
   })
