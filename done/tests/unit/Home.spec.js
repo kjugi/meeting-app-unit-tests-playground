@@ -32,6 +32,7 @@ describe('Home page', () => {
     const wrapper = factory(localStore)
 
     expect(wrapper.findAll('.home__item')).toHaveLength(2)
+    expect(wrapper).toMatchSnapshot()
   })
 
   it('render empty list message when don\'t have items', () => {

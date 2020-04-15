@@ -66,8 +66,10 @@ jest tests/unit/Home.spec.js
 1. Message component
     - renders prop title when passed
     - emit event when isMessageShowed updates
+    - default component matches snapshot
 2. Checkbox component
     - emit events when change checked value
+    - default component matches snapshot
 3. Home view
     - meeting list contains elements from store
     - render empty list message when don\'t have items
@@ -95,9 +97,11 @@ jest tests/unit/Home.spec.js
 - Emitt events testing
 - async testing syntax
 - Both side component testing
+- Snapshot testing
+- Acceptance testing and snapthot-diff checking
 
 ## Other topics which are not ready yet:
-6. Snapshot testing
+5.1. Split factory functions from store and app to separate files and import when necessary. Build one huge factory function with all needed params to split
 7. Testing vuex store actions and mutations
 
 ## Found a bug or repo needs update? - contribute
