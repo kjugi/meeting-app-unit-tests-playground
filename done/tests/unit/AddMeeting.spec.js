@@ -1,32 +1,17 @@
-import { mount, createLocalVue } from '@vue/test-utils'
 import snapshotDiff from 'snapshot-diff'
-import Vuex from 'vuex'
 import axios from 'axios'
 import { advanceTo, clear } from 'jest-date-mock'
 // Check for more: https://github.com/kentor/flush-promises
 // or if you don't want to add external lib: https://github.com/kentor/flush-promises/blob/master/index.js
 import flushPromises from 'flush-promises'
+import { createWrapper, createStore } from '../factory'
 import AddMeeting from '@/views/AddMeeting.vue'
-
-const localVue = createLocalVue()
-localVue.use(Vuex)
 
 // Check for more: https://jestjs.io/docs/en/mock-functions.html
 // Alternative for mocking requests: https://github.com/ctimmerm/axios-mock-adapter
 jest.mock('axios')
 // Check for more: https://jestjs.io/docs/en/timer-mocks
 jest.useFakeTimers()
-
-const factory = (options = {}) => {
-  return mount(AddMeeting, {...options})
-}
-
-const createStore = (actions = {}) => {
-  return new Vuex.Store({
-    state: {},
-    actions
-  })
-}
 
 describe('AddMeeting page', () => {
   let present
@@ -61,7 +46,7 @@ describe('AddMeeting page', () => {
   })
 
   it('default form is rendered', () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(AddMeeting)
 
     expect(wrapper.classes()).toStrictEqual([
       'add-meeting',
@@ -76,7 +61,7 @@ describe('AddMeeting page', () => {
   })
 
   it('has loading class when form is blocked', async () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(AddMeeting)
 
     present = wrapper.html()
 
@@ -94,7 +79,7 @@ describe('AddMeeting page', () => {
   })
 
   it('predefined addreses are available', async () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(AddMeeting)
     present = wrapper.html()
 
     expect(wrapper.vm.options).toBeNull()
@@ -113,7 +98,7 @@ describe('AddMeeting page', () => {
   })
 
   it('predefined select change value to selected option', async () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(AddMeeting)
     await flushPromises()
     present = wrapper.html()
 
@@ -128,7 +113,7 @@ describe('AddMeeting page', () => {
   })
 
   it('predefined checkbox toggle fields and clear values', async () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(AddMeeting)
     await flushPromises()
     present = wrapper.html()
 
@@ -158,7 +143,7 @@ describe('AddMeeting page', () => {
   })
 
   it('can set custom meeting day in form', async () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(AddMeeting)
     const todayDateFormat = new Date().toJSON().slice(0, 10)
     await flushPromises()
     present = wrapper.html()
@@ -175,7 +160,7 @@ describe('AddMeeting page', () => {
   })
 
   it('min attribute in input date has today date', async () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(AddMeeting)
     const todayDateFormat = new Date().toJSON().slice(0, 10)
     await flushPromises()
 
@@ -183,7 +168,7 @@ describe('AddMeeting page', () => {
   })
 
   it('error is showed when form is invalid', async () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(AddMeeting)
     present = wrapper.html()
 
     expect(wrapper.vm.isFormValid).toBe(false)
@@ -202,7 +187,7 @@ describe('AddMeeting page', () => {
   })
 
   it('button can be disable or enabled', async () => {
-    const wrapper = factory()
+    const wrapper = createWrapper(AddMeeting)
     await flushPromises()
     present = wrapper.html()
 
@@ -226,8 +211,8 @@ describe('AddMeeting page', () => {
     const actions = {
       doReservation: jest.fn()
     }
-    const localStore = createStore(actions)
-    const wrapper = factory({ store: localStore, localVue })
+    const localStore = createStore({ actions })
+    const wrapper = createWrapper(AddMeeting, { store: localStore })
     present = wrapper.html()
 
     expect(present).toMatchSnapshot()
@@ -263,10 +248,7 @@ describe('AddMeeting page', () => {
   })
 
   it('message is showed after button click and hide on @hideMessage event', async () => {
-    const localStore = createStore({
-      doReservation: jest.fn()
-    })
-    const wrapper = factory({ store: localStore, localVue })
+    const wrapper = createWrapper(AddMeeting)
 
     await flushPromises()
     await wrapper.setData({
