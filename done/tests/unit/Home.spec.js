@@ -1,10 +1,5 @@
-import { createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
 import { createWrapper, createStore } from '../factory'
 import HomePage from '@/views/Home.vue'
-
-const localVue = createLocalVue()
-localVue.use(Vuex)
 
 describe('Home page', () => {
   it('meeting list contains elements from store', () => {
@@ -20,15 +15,14 @@ describe('Home page', () => {
         }
       ]
     }})
-    const wrapper = createWrapper(HomePage, { store: localStore, localVue })
+    const wrapper = createWrapper(HomePage, { store: localStore })
 
     expect(wrapper.findAll('.home__item')).toHaveLength(2)
     expect(wrapper).toMatchSnapshot()
   })
 
   it('render empty list message when don\'t have items', () => {
-    const localStore = createStore({ state: { meetingList: [] }})
-    const wrapper = createWrapper(HomePage, { store: localStore, localVue })
+    const wrapper = createWrapper(HomePage)
 
     expect(wrapper.find('.home div').text()).toBe('Meeting list is empty!')
   })

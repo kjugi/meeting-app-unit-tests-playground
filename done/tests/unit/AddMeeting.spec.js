@@ -1,6 +1,4 @@
-import { createLocalVue } from '@vue/test-utils'
 import snapshotDiff from 'snapshot-diff'
-import Vuex from 'vuex'
 import axios from 'axios'
 import { advanceTo, clear } from 'jest-date-mock'
 // Check for more: https://github.com/kentor/flush-promises
@@ -8,9 +6,6 @@ import { advanceTo, clear } from 'jest-date-mock'
 import flushPromises from 'flush-promises'
 import { createWrapper, createStore } from '../factory'
 import AddMeeting from '@/views/AddMeeting.vue'
-
-const localVue = createLocalVue()
-localVue.use(Vuex)
 
 // Check for more: https://jestjs.io/docs/en/mock-functions.html
 // Alternative for mocking requests: https://github.com/ctimmerm/axios-mock-adapter
@@ -217,7 +212,7 @@ describe('AddMeeting page', () => {
       doReservation: jest.fn()
     }
     const localStore = createStore({ actions })
-    const wrapper = createWrapper(AddMeeting, { store: localStore, localVue })
+    const wrapper = createWrapper(AddMeeting, { store: localStore })
     present = wrapper.html()
 
     expect(present).toMatchSnapshot()
@@ -253,10 +248,7 @@ describe('AddMeeting page', () => {
   })
 
   it('message is showed after button click and hide on @hideMessage event', async () => {
-    const localStore = createStore({ actions: {
-      doReservation: jest.fn()
-    }})
-    const wrapper = createWrapper(AddMeeting, { store: localStore, localVue })
+    const wrapper = createWrapper(AddMeeting)
 
     await flushPromises()
     await wrapper.setData({
