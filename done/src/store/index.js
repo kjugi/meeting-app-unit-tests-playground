@@ -3,18 +3,24 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-    meetingList: []
-  },
-  mutations: {
-    addMeeting (state, data) {
-      state.meetingList.push(data)
-    }
-  },
-  actions: {
-    doReservation ({ commit }, data) {
-      commit('addMeeting', data)
-    }
+export const state = {
+  meetingList: []
+}
+
+export const mutations = {
+  addMeeting (state, data) {
+    state.meetingList.push(data)
   }
+}
+
+export const actions = {
+  doReservation ({ commit }, data) {
+    commit('addMeeting', data)
+  }
+}
+
+export default new Vuex.Store({
+  state,
+  mutations,
+  actions
 })
