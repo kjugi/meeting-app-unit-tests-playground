@@ -1,4 +1,3 @@
-import { mount } from '@vue/test-utils'
 import Message from '@/components/Message.vue'
 
 // Check for more: https://jestjs.io/docs/en/timer-mocks

@@ -1,13 +1,10 @@
-import { mount, createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
+import snapshotDiff from 'snapshot-diff'
 import axios from 'axios'
+import { advanceTo, clear } from 'jest-date-mock'
 // Check for more: https://github.com/kentor/flush-promises
 // or if you don't want to add external lib: https://github.com/kentor/flush-promises/blob/master/index.js
 import flushPromises from 'flush-promises'
 import AddMeeting from '@/views/AddMeeting.vue'
-
-const localVue = createLocalVue()
-localVue.use(Vuex)
 
 // Check for more: https://jestjs.io/docs/en/mock-functions.html
 // Alternative for mocking requests: https://github.com/ctimmerm/axios-mock-adapter

@@ -1,4 +1,3 @@
-import { mount } from '@vue/test-utils'
 import Checkbox from '@/components/Checkbox.vue'
 
 describe('Checkbox.vue', () => {
