@@ -19,8 +19,17 @@ export const actions = {
   }
 }
 
+// Just for test case purposes
+export const getters = {
+  getTodayMeetings ( state ) {
+    const today = new Date().toJSON().slice(0, 10)
+    return state.meetingList.filter(meeting => meeting.date === today)
+  }
+}
+
 export default new Vuex.Store({
   state,
   mutations,
-  actions
+  actions,
+  getters
 })
