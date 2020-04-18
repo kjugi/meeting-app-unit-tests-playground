@@ -85,6 +85,12 @@ jest tests/unit/Home.spec.js
     - button can be disable or enabled
     - can add meeting to store
     - message is showed after button click and hide on @hideMessage event
+5. Actions
+    - doReservation commits to mutation
+6. Mutations
+    - addMeeting push item to state.meetingList
+7. Getters
+    - getTodayMeetings returns meetings from today
 
 
 ## Covered topics and good practices in this repo:
