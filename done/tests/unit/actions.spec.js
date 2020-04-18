@@ -1,6 +1,14 @@
 import { actions } from '@/store'
+import axios from 'axios'
+import flushPromises from 'flush-promises'
+
+jest.mock('axios')
 
 describe('actions - store', () => {
+  beforeEach(() => {
+    axios.post.mockClear()
+  })
+
   it('doReservation commits to mutation', () => {
     const context = {
       commit: jest.fn()
@@ -12,5 +20,18 @@ describe('actions - store', () => {
     expect(context.commit).toHaveBeenCalledWith('addMeeting', testItem)
   })
 
-  // TODO: Add action with mocked request to API
+  it('fakeApiAction makes commit based on API response', async () => {
+    const context = {
+      commit: jest.fn()
+    }
+    const testItem = { 'test': true }
+
+    await actions.fakeApiAction(context, testItem)
+
+    await flushPromises()
+
+    expect(axios.post).toHaveBeenCalledWith('http://localhost:5679/fake/confirmMeeting', testItem)
+    expect(axios.post).toHaveBeenCalledTimes(1)
+    expect(context.commit).toHaveBeenCalledWith('fakeCommit', true)
+  })
 })
