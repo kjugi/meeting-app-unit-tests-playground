@@ -102,12 +102,13 @@ jest tests/unit/Home.spec.js
 - Factory functions
 - Emitt events testing
 - async testing syntax
+- Testing vuex actions, mutations and getters
 - Both side component testing
 - Snapshot testing
 - Acceptance testing and snapthot-diff checking
 
 ## Other topics which are not ready yet:
-1. Testing vuex store actions and mutations
+1. Testing Vuex store instance
 
 ## Found a bug or repo needs update? - contribute
 
