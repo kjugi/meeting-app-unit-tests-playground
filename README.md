@@ -107,8 +107,23 @@ jest tests/unit/Home.spec.js
 - Snapshot testing
 - Acceptance testing and snapthot-diff checking
 
-## Other topics which are not ready yet:
-1. Testing Vuex store instance
+## Extra topic, not recommended in big stores:
+- Testing Vuex store instance
+
+## What about Vuex modules?
+It's the same approach as importing actions from single module Vuex store. You are just importing actions from store module and i.e. testing in separate file for each store module
+
+```
+storeModuleA.js
+storeModuleB.js
+```
+
+```
+storeModuleAActions.spec.js
+storeModuleAGetters.spec.js
+storeModuleBActions.spec.js
+...
+```
 
 ## Found a bug or repo needs update? - contribute
 
