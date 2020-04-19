@@ -85,6 +85,12 @@ jest tests/unit/Home.spec.js
     - button can be disable or enabled
     - can add meeting to store
     - message is showed after button click and hide on @hideMessage event
+5. Actions
+    - doReservation commits to mutation
+6. Mutations
+    - addMeeting push item to state.meetingList
+7. Getters
+    - getTodayMeetings returns meetings from today
 
 
 ## Covered topics and good practices in this repo:
@@ -96,12 +102,28 @@ jest tests/unit/Home.spec.js
 - Factory functions
 - Emitt events testing
 - async testing syntax
+- Testing vuex actions, mutations and getters
 - Both side component testing
 - Snapshot testing
 - Acceptance testing and snapthot-diff checking
 
-## Other topics which are not ready yet:
-1. Testing vuex store actions and mutations
+## Extra topic, not recommended in big stores:
+- Testing Vuex store instance
+
+## What about Vuex modules?
+It's the same approach as importing actions from single module Vuex store. You are just importing actions from store module and i.e. testing in separate file for each store module
+
+```
+storeModuleA.js
+storeModuleB.js
+```
+
+```
+storeModuleAActions.spec.js
+storeModuleAGetters.spec.js
+storeModuleBActions.spec.js
+...
+```
 
 ## Found a bug or repo needs update? - contribute
 
