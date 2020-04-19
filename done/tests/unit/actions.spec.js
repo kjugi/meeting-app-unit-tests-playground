@@ -26,12 +26,20 @@ describe('actions - store', () => {
     }
     const testItem = { 'test': true }
 
-    await actions.fakeApiAction(context, testItem)
+    actions.fakeApiAction(context, testItem)
 
     await flushPromises()
 
     expect(axios.post).toHaveBeenCalledWith('http://localhost:5679/fake/confirmMeeting', testItem)
     expect(axios.post).toHaveBeenCalledTimes(1)
     expect(context.commit).toHaveBeenCalledWith('fakeCommit', true)
+
+    axios.post.mockImplementationOnce(() => {
+      throw 'error'
+    })
+    actions.fakeApiAction(context)
+
+    expect(axios.post).toHaveBeenCalledTimes(2)
+    expect(context.commit).toHaveBeenCalledWith('fakeCommit', false)
   })
 })

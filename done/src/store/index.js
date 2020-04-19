@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -19,7 +20,7 @@ export const actions = {
   },
   async fakeApiAction ({ commit }, data) {
     try {
-      await axios.post('http://localhost:5679/fake/confirmMeeting', { data })
+      await axios.post('http://localhost:5679/fake/confirmMeeting', data)
       commit('fakeCommit', true)
     }
     catch (error) {
