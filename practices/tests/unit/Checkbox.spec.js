@@ -1,6 +1,6 @@
 import Checkbox from '@/components/Checkbox.vue'
 
-describe('Checkbox.vue', () => {
+describe('components/Checkbox.vue', () => {
   // it('emit events when trigger change on checkbox', () => {
   // })
 

@@ -4,7 +4,7 @@ import Message from '@/components/Message.vue'
 jest.useFakeTimers()
 // jest.runAllTimers()
 
-describe('Message.vue', () => {
+describe('components/Message.vue', () => {
   // it('renders prop title when passed', () => {
   // })
 

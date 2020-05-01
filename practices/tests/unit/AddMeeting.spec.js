@@ -12,7 +12,7 @@ jest.mock('axios')
 // Check for more: https://jestjs.io/docs/en/timer-mocks
 jest.useFakeTimers()
 
-describe('AddMeeting page', () => {
+describe('views/AddMeeting.vue', () => {
   beforeEach(() => {
   })
 

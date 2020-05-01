@@ -1,6 +1,6 @@
 import { actions } from '@/store'
 
-describe('actions - store', () => {
+describe('store/actions', () => {
   // it('doReservation commits to mutation', () => {
   // })
 
