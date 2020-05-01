@@ -4,7 +4,7 @@ import flushPromises from 'flush-promises'
 
 jest.mock('axios')
 
-describe('actions - store', () => {
+describe('store/actions', () => {
   beforeEach(() => {
     axios.post.mockClear()
   })
