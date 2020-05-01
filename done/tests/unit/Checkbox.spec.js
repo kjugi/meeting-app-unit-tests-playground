@@ -7,7 +7,7 @@ const propsData = {
   value: false
 }
 
-describe('Checkbox.vue', () => {
+describe('components/Checkbox.vue', () => {
   it('emit events when change checked value', () => {
     const wrapper = createWrapper(Checkbox, { propsData })
 

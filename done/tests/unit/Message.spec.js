@@ -9,7 +9,7 @@ const propsData = {
   isMessageShowed: false
 }
 
-describe('Message.vue', () => {
+describe('components/Message.vue', () => {
   it('renders prop title when passed', () => {
     const wrapper = createWrapper(Message, { propsData })
 

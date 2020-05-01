@@ -1,7 +1,7 @@
 import { createWrapper, createStore } from '../factory'
 import HomePage from '@/views/Home.vue'
 
-describe('Home page', () => {
+describe('views/Home.vue', () => {
   it('meeting list contains elements from store', () => {
     const localStore = createStore({ state: {
       meetingList: [
