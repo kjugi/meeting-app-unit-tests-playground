@@ -8,7 +8,7 @@ localVue.use(Vuex)
 
 jest.mock('axios')
 
-describe('vuex store instance', () => {
+describe('Vuex store instance', () => {
   let store
   let storeConfig
 
