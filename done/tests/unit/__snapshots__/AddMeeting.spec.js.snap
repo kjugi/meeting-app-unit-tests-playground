@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddMeeting page button can be disable or enabled 1`] = `
+exports[`views/AddMeeting.vue button can be disable or enabled 1`] = `
 <div class="add-meeting">
   <div class="add-meeting__container">
     <h1>Add meeting</h1>
@@ -42,7 +42,7 @@ exports[`AddMeeting page button can be disable or enabled 1`] = `
 </div>
 `;
 
-exports[`AddMeeting page button can be disable or enabled 2`] = `
+exports[`views/AddMeeting.vue button can be disable or enabled 2`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -68,7 +68,7 @@ exports[`AddMeeting page button can be disable or enabled 2`] = `
 "
 `;
 
-exports[`AddMeeting page can add meeting to store 1`] = `
+exports[`views/AddMeeting.vue can add meeting to store 1`] = `
 <div class="add-meeting add-meeting--loading">
   <div class="add-meeting__container">
     <h1>Add meeting</h1>
@@ -101,7 +101,7 @@ exports[`AddMeeting page can add meeting to store 1`] = `
 </div>
 `;
 
-exports[`AddMeeting page can add meeting to store 2`] = `
+exports[`views/AddMeeting.vue can add meeting to store 2`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -140,7 +140,7 @@ exports[`AddMeeting page can add meeting to store 2`] = `
 "
 `;
 
-exports[`AddMeeting page can add meeting to store 3`] = `
+exports[`views/AddMeeting.vue can add meeting to store 3`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -171,7 +171,7 @@ exports[`AddMeeting page can add meeting to store 3`] = `
   </div>"
 `;
 
-exports[`AddMeeting page can set custom meeting day in form 1`] = `
+exports[`views/AddMeeting.vue can set custom meeting day in form 1`] = `
 <div class="add-meeting">
   <div class="add-meeting__container">
     <h1>Add meeting</h1>
@@ -213,12 +213,12 @@ exports[`AddMeeting page can set custom meeting day in form 1`] = `
 </div>
 `;
 
-exports[`AddMeeting page can set custom meeting day in form 2`] = `
+exports[`views/AddMeeting.vue can set custom meeting day in form 2`] = `
 "Snapshot Diff:
 Compared values have no visual difference."
 `;
 
-exports[`AddMeeting page default form is rendered 1`] = `
+exports[`views/AddMeeting.vue default form is rendered 1`] = `
 <div class="add-meeting add-meeting--loading">
   <div class="add-meeting__container">
     <h1>Add meeting</h1>
@@ -251,7 +251,7 @@ exports[`AddMeeting page default form is rendered 1`] = `
 </div>
 `;
 
-exports[`AddMeeting page error is showed when form is invalid 1`] = `
+exports[`views/AddMeeting.vue error is showed when form is invalid 1`] = `
 <div class="add-meeting add-meeting--loading">
   <div class="add-meeting__container">
     <h1>Add meeting</h1>
@@ -284,7 +284,7 @@ exports[`AddMeeting page error is showed when form is invalid 1`] = `
 </div>
 `;
 
-exports[`AddMeeting page error is showed when form is invalid 2`] = `
+exports[`views/AddMeeting.vue error is showed when form is invalid 2`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -306,7 +306,7 @@ exports[`AddMeeting page error is showed when form is invalid 2`] = `
 "
 `;
 
-exports[`AddMeeting page has loading class when form is blocked 1`] = `
+exports[`views/AddMeeting.vue has loading class when form is blocked 1`] = `
 <div class="add-meeting add-meeting--loading">
   <div class="add-meeting__container">
     <h1>Add meeting</h1>
@@ -339,7 +339,7 @@ exports[`AddMeeting page has loading class when form is blocked 1`] = `
 </div>
 `;
 
-exports[`AddMeeting page has loading class when form is blocked 2`] = `
+exports[`views/AddMeeting.vue has loading class when form is blocked 2`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -370,7 +370,7 @@ exports[`AddMeeting page has loading class when form is blocked 2`] = `
       </div>"
 `;
 
-exports[`AddMeeting page predefined addreses are available 1`] = `
+exports[`views/AddMeeting.vue predefined addreses are available 1`] = `
 <div class="add-meeting add-meeting--loading">
   <div class="add-meeting__container">
     <h1>Add meeting</h1>
@@ -403,7 +403,7 @@ exports[`AddMeeting page predefined addreses are available 1`] = `
 </div>
 `;
 
-exports[`AddMeeting page predefined addreses are available 2`] = `
+exports[`views/AddMeeting.vue predefined addreses are available 2`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -434,7 +434,7 @@ exports[`AddMeeting page predefined addreses are available 2`] = `
       </div>"
 `;
 
-exports[`AddMeeting page predefined checkbox toggle fields and clear values 1`] = `
+exports[`views/AddMeeting.vue predefined checkbox toggle fields and clear values 1`] = `
 <div class="add-meeting">
   <div class="add-meeting__container">
     <h1>Add meeting</h1>
@@ -476,7 +476,7 @@ exports[`AddMeeting page predefined checkbox toggle fields and clear values 1`] 
 </div>
 `;
 
-exports[`AddMeeting page predefined checkbox toggle fields and clear values 2`] = `
+exports[`views/AddMeeting.vue predefined checkbox toggle fields and clear values 2`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -507,12 +507,12 @@ exports[`AddMeeting page predefined checkbox toggle fields and clear values 2`] 
       <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">"
 `;
 
-exports[`AddMeeting page predefined checkbox toggle fields and clear values 3`] = `
+exports[`views/AddMeeting.vue predefined checkbox toggle fields and clear values 3`] = `
 "Snapshot Diff:
 Compared values have no visual difference."
 `;
 
-exports[`AddMeeting page predefined checkbox toggle fields and clear values 4`] = `
+exports[`views/AddMeeting.vue predefined checkbox toggle fields and clear values 4`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -543,7 +543,7 @@ exports[`AddMeeting page predefined checkbox toggle fields and clear values 4`] 
       <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">"
 `;
 
-exports[`AddMeeting page predefined select change value to selected option 1`] = `
+exports[`views/AddMeeting.vue predefined select change value to selected option 1`] = `
 <div class="add-meeting">
   <div class="add-meeting__container">
     <h1>Add meeting</h1>
@@ -585,7 +585,7 @@ exports[`AddMeeting page predefined select change value to selected option 1`] =
 </div>
 `;
 
-exports[`AddMeeting page predefined select change value to selected option 2`] = `
+exports[`views/AddMeeting.vue predefined select change value to selected option 2`] = `
 "Snapshot Diff:
 Compared values have no visual difference."
 `;

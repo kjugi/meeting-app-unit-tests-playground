@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home page meeting list contains elements from store 1`] = `
+exports[`views/Home.vue meeting list contains elements from store 1`] = `
 <div class="home">
   <div class="home__list">
     <div class="home__item">
