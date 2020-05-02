@@ -87,6 +87,7 @@ jest tests/unit/Home.spec.js
     - message is showed after button click and hide on @hideMessage event
 5. Actions
     - doReservation commits to mutation
+    - exampleApiAction makes commit based on API response
 6. Mutations
     - addMeeting push item to state.meetingList
 7. Getters

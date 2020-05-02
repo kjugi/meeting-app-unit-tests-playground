@@ -4,7 +4,7 @@ import flushPromises from 'flush-promises'
 
 jest.mock('axios')
 
-describe('actions - store', () => {
+describe('store/actions', () => {
   beforeEach(() => {
     axios.post.mockClear()
   })
@@ -20,26 +20,26 @@ describe('actions - store', () => {
     expect(context.commit).toHaveBeenCalledWith('addMeeting', testItem)
   })
 
-  it('fakeApiAction makes commit based on API response', async () => {
+  it('exampleApiAction makes commit based on API response', async () => {
     const context = {
       commit: jest.fn()
     }
     const testItem = { 'test': true }
 
-    actions.fakeApiAction(context, testItem)
+    actions.exampleApiAction(context, testItem)
 
     await flushPromises()
 
-    expect(axios.post).toHaveBeenCalledWith('http://localhost:5679/fake/confirmMeeting', testItem)
+    expect(axios.post).toHaveBeenCalledWith('http://localhost:5679/example/confirmMeeting', testItem)
     expect(axios.post).toHaveBeenCalledTimes(1)
-    expect(context.commit).toHaveBeenCalledWith('fakeCommit', true)
+    expect(context.commit).toHaveBeenCalledWith('exampleCommit', true)
 
     axios.post.mockImplementationOnce(() => {
       throw 'error'
     })
-    actions.fakeApiAction(context)
+    actions.exampleApiAction(context)
 
     expect(axios.post).toHaveBeenCalledTimes(2)
-    expect(context.commit).toHaveBeenCalledWith('fakeCommit', false)
+    expect(context.commit).toHaveBeenCalledWith('exampleCommit', false)
   })
 })

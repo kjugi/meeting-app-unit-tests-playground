@@ -18,13 +18,13 @@ export const actions = {
   doReservation ({ commit }, data) {
     commit('addMeeting', data)
   },
-  async fakeApiAction ({ commit }, data) {
+  async exampleApiAction ({ commit }, data) {
     try {
-      await axios.post('http://localhost:5679/fake/confirmMeeting', data)
-      commit('fakeCommit', true)
+      await axios.post('http://localhost:5679/example/confirmMeeting', data)
+      commit('exampleCommit', true)
     }
     catch (error) {
-      commit('fakeCommit', false)
+      commit('exampleCommit', false)
     }
   }
 }

@@ -1,6 +1,6 @@
 import { mutations } from '@/store'
 
-describe('mutations - store', () => {
+describe('store/mutations', () => {
   // it('addMeeting push item to state.meetingList', () => {
   // })
 })

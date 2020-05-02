@@ -8,7 +8,7 @@ localVue.use(Vuex)
 
 jest.mock('axios')
 
-describe('vuex store instance', () => {
+describe('Vuex store instance', () => {
   let store
   let storeConfig
 
@@ -19,7 +19,7 @@ describe('vuex store instance', () => {
         addMeeting (state, data) {
           state.meetingList.push(data)
         },
-        fakeCommit () {
+        exampleCommit () {
           return true
         }
       },
@@ -27,13 +27,13 @@ describe('vuex store instance', () => {
         doReservation ({ commit }, data) {
           commit('addMeeting', data)
         },
-        async fakeApiAction ({ commit }, data) {
+        async exampleApiAction ({ commit }, data) {
           try {
-            await axios.post('http://localhost:5679/fake/confirmMeeting', data)
-            commit('fakeCommit', true)
+            await axios.post('http://localhost:5679/example/confirmMeeting', data)
+            commit('exampleCommit', true)
           }
           catch (error) {
-            commit('fakeCommit', false)
+            commit('exampleCommit', false)
           }
         }
       },
@@ -62,20 +62,20 @@ describe('vuex store instance', () => {
     expect(store.state.meetingList).toStrictEqual([testElement, testElement])
   })
 
-  it('dispatching fakeApiAction doing mocked request', async () => {
+  it('dispatching exampleApiAction doing mocked request', async () => {
     const testItem = { 'test': true }
 
-    store.dispatch('fakeApiAction', testItem)
+    store.dispatch('exampleApiAction', testItem)
 
     await flushPromises()
 
-    expect(axios.post).toHaveBeenCalledWith('http://localhost:5679/fake/confirmMeeting', testItem)
+    expect(axios.post).toHaveBeenCalledWith('http://localhost:5679/example/confirmMeeting', testItem)
     expect(axios.post).toHaveBeenCalledTimes(1)
 
     axios.post.mockImplementationOnce(() => {
       throw 'error'
     })
-    store.dispatch('fakeApiAction', testItem)
+    store.dispatch('exampleApiAction', testItem)
 
     expect(axios.post).toHaveBeenCalledTimes(2)
   })

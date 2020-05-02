@@ -1,6 +1,6 @@
 import HomePage from '@/views/Home.vue'
 
-describe('Home page', () => {
+describe('views/Home.vue', () => {
   // it('meeting list contains elements from store', () => {
   // })
 
