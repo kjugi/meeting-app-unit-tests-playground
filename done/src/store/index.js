@@ -22,8 +22,7 @@ export const actions = {
     try {
       await axios.post('http://localhost:5679/example/confirmMeeting', data)
       commit('exampleCommit', true)
-    }
-    catch (error) {
+    } catch (error) {
       commit('exampleCommit', false)
     }
   }
@@ -31,7 +30,7 @@ export const actions = {
 
 // Just for test case purposes
 export const getters = {
-  getTodayMeetings ( state ) {
+  getTodayMeetings (state) {
     const today = new Date().toJSON().slice(0, 10)
     return state.meetingList.filter(meeting => meeting.date === today)
   }
