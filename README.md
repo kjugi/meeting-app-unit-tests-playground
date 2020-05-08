@@ -53,6 +53,7 @@ jest tests/unit/Home.spec.js
 
 # TODO
 1. Add data-testid attributes in components
+Idea with githook and doing tests before push
 
 ## Overview of 2 routes booking app:
 
