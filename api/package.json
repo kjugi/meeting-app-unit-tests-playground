@@ -5,5 +5,8 @@
   },
   "scripts": {
     "start": "node app.js"
+  },
+  "engines": {
+    "node" : ">=12"
   }
 }

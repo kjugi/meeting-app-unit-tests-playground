@@ -8,6 +8,9 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
+  "engines": {
+    "node" : ">=12"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
