@@ -54,7 +54,7 @@ describe('views/AddMeeting.vue', () => {
     ])
     expect(wrapper.find('#email').exists()).toBe(true)
     expect(wrapper.find('#predefined').exists()).toBe(true)
-    expect(wrapper.find({ ref: 'meetingDate' }).exists()).toBe(true)
+    expect(wrapper.findComponent({ ref: 'meetingDate' }).exists()).toBe(true)
     expect(wrapper.find('.add-meeting__button').exists()).toBe(true)
     expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
     expect(wrapper).toMatchSnapshot()
@@ -267,13 +267,13 @@ describe('views/AddMeeting.vue', () => {
     expect(wrapper.vm.isMessageShowed).toBe(true)
     expect(wrapper.vm.messageClass).toBe('message--success')
     expect(wrapper.vm.messageTitle).toBe('Successfully added a new meeting')
-    expect(wrapper.find('.message--success').isVisible()).toBe(true)
+    expect(wrapper.find('.message--success').element).toBeVisible()
 
     jest.runAllTimers()
     await flushPromises()
 
     expect(wrapper.vm.isMessageShowed).toBe(false)
-    expect(wrapper.find('.message--success').isVisible()).toBe(false)
+    expect(wrapper.find('.message--success').element).not.toBeVisible()
   })
 
   afterEach(() => {
