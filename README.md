@@ -51,6 +51,9 @@ Real example:
 jest tests/unit/Home.spec.js
 ```
 
+# TODO
+1. Add data-testid attributes in components
+
 ## Overview of 2 routes booking app:
 
 1. Homepage view with all booked meetings
