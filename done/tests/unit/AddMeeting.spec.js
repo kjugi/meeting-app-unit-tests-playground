@@ -52,11 +52,13 @@ describe('views/AddMeeting.vue', () => {
       'add-meeting',
       'add-meeting--loading'
     ])
-    expect(wrapper.find('#email').exists()).toBe(true)
-    expect(wrapper.find('#predefined').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="emailInput"]').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="predefinedCheckbox"]').exists())
+      .toBe(true)
     expect(wrapper.findComponent({ ref: 'meetingDate' }).exists()).toBe(true)
-    expect(wrapper.find('.add-meeting__button').exists()).toBe(true)
-    expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="addMeetingButton"]').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="generalErrorMessage"]').exists())
+      .toBe(true)
     expect(wrapper).toMatchSnapshot()
   })
 
@@ -93,7 +95,11 @@ describe('views/AddMeeting.vue', () => {
     expect(wrapper.vm.isMessageShowed).toBe(false)
     expect(wrapper.vm.messageTitle).toBe('')
     expect(wrapper.vm.options.length).toBe(3)
-    expect(wrapper.findAll('#email option').length).toBe(4)
+    expect(
+      wrapper.findAll(
+        '[data-testid="emailInput"] [data-testid="predefinedEmailOption"]'
+      ).length
+    ).toBe(4)
     expect(snapshotDiff(present, next)).toMatchSnapshot()
   })
 
@@ -105,7 +111,9 @@ describe('views/AddMeeting.vue', () => {
     expect(wrapper.vm.selectedPerson).toBe('')
     expect(present).toMatchSnapshot()
 
-    wrapper.findAll('#email option').at(2).setSelected()
+    wrapper.findAll(
+      '[data-testid="emailInput"] [data-testid="predefinedEmailOption"'
+    ).at(2).setSelected()
     next = wrapper.html()
 
     expect(wrapper.vm.selectedPerson).toBe('Example Person1')
@@ -120,25 +128,27 @@ describe('views/AddMeeting.vue', () => {
     expect(wrapper.vm.predefined).toBe(true)
     expect(present).toMatchSnapshot()
 
-    await wrapper.find('#predefined').setChecked(false)
+    await wrapper.find('[data-testid="predefinedCheckbox"] input')
+      .setChecked(false)
     next = wrapper.html()
 
     expect(wrapper.vm.predefined).toBe(false)
     expect(snapshotDiff(present, next)).toMatchSnapshot()
 
     present = next
-    wrapper.find('#email').setValue('example value')
+    wrapper.find('[data-testid="emailInput"]').setValue('example value')
     next = wrapper.html()
 
     expect(wrapper.vm.email).toBe('example value')
     expect(snapshotDiff(present, next)).toMatchSnapshot()
 
     present = next
-    await wrapper.find('#predefined').setChecked(true)
+    await wrapper.find('[data-testid="predefinedCheckbox"] input')
+      .setChecked(true)
     next = wrapper.html()
 
     expect(wrapper.vm.email).toBe('')
-    expect(wrapper.find('#email').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="emailInput"]').exists()).toBe(true)
     expect(snapshotDiff(present, next)).toMatchSnapshot()
   })
 
@@ -151,10 +161,11 @@ describe('views/AddMeeting.vue', () => {
     expect(wrapper.vm.meetingDate).toBe('')
     expect(present).toMatchSnapshot()
 
-    wrapper.find('#meetingDate').setValue(todayDateFormat)
+    wrapper.find('[data-testid="meetingDateInput"]').setValue(todayDateFormat)
     next = wrapper.html()
 
-    expect(wrapper.find('#meetingDate').element.value).toBe(todayDateFormat)
+    expect(wrapper.find('[data-testid="meetingDateInput"]').element.value)
+      .toBe(todayDateFormat)
     expect(wrapper.vm.meetingDate).toBe(todayDateFormat)
     expect(snapshotDiff(present, next)).toMatchSnapshot()
   })
@@ -164,7 +175,8 @@ describe('views/AddMeeting.vue', () => {
     const todayDateFormat = new Date().toJSON().slice(0, 10)
     await flushPromises()
 
-    expect(wrapper.find('#meetingDate').attributes().min).toBe(todayDateFormat)
+    expect(wrapper.find('[data-testid="meetingDateInput"]').attributes().min)
+      .toBe(todayDateFormat)
   })
 
   it('error is showed when form is invalid', async () => {
@@ -172,7 +184,8 @@ describe('views/AddMeeting.vue', () => {
     present = wrapper.html()
 
     expect(wrapper.vm.isFormValid).toBe(false)
-    expect(wrapper.find('.add-meeting__error').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="generalErrorMessage"]').exists())
+      .toBe(true)
     expect(present).toMatchSnapshot()
 
     await wrapper.setData({
@@ -182,7 +195,8 @@ describe('views/AddMeeting.vue', () => {
     next = wrapper.html()
 
     expect(wrapper.vm.isFormValid).toBe(true)
-    expect(wrapper.find('.add-meeting__error').exists()).toBe(false)
+    expect(wrapper.find('[data-testid="generalErrorMessage"]').exists())
+      .toBe(false)
     expect(snapshotDiff(present, next)).toMatchSnapshot()
   })
 
@@ -193,7 +207,8 @@ describe('views/AddMeeting.vue', () => {
 
     expect(wrapper.vm.isFormValid).toBe(false)
     expect(wrapper.vm.isFormBlocked).toBe(false)
-    expect(wrapper.find('.add-meeting__button').attributes().disabled).toBe('disabled')
+    expect(wrapper.find('[data-testid="addMeetingButton"]').attributes().disabled)
+      .toBe('disabled')
     expect(present).toMatchSnapshot()
 
     await wrapper.setData({
@@ -203,7 +218,8 @@ describe('views/AddMeeting.vue', () => {
     next = wrapper.html()
 
     expect(wrapper.vm.isFormValid).toBe(true)
-    expect(wrapper.find('.add-meeting__button').attributes().disabled).toBeUndefined()
+    expect(wrapper.find('[data-testid="addMeetingButton"]').attributes().disabled)
+      .toBeUndefined()
     expect(snapshotDiff(present, next)).toMatchSnapshot()
   })
 
@@ -227,7 +243,7 @@ describe('views/AddMeeting.vue', () => {
 
     expect(snapshotDiff(present, next)).toMatchSnapshot()
 
-    wrapper.find('.add-meeting__button').trigger('click')
+    wrapper.find('[data-testid="addMeetingButton"]').trigger('click')
 
     expect(wrapper.vm.isFormBlocked).toBe(true)
 
@@ -256,7 +272,7 @@ describe('views/AddMeeting.vue', () => {
       email: 'test',
       meetingDate: '2020-12-12'
     })
-    wrapper.find('.add-meeting__button').trigger('click')
+    wrapper.find('[data-testid="addMeetingButton"]').trigger('click')
     await flushPromises()
 
     expect(axios.post).toHaveBeenCalledWith('http://localhost:5679/add', {
