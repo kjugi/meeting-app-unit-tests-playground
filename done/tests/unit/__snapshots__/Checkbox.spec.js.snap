@@ -3,5 +3,5 @@
 exports[`components/Checkbox.vue default component matches snapshot 1`] = `
 <div class="checkbox"><label for="checkbox1">
     label prop
-  </label> <input id="checkbox1" type="checkbox"></div>
+  </label> <input id="checkbox1" type="checkbox" data-testid="testId"></div>
 `;

@@ -5,5 +5,8 @@ module.exports = {
   ],
   setupFiles: [
     'jest-date-mock'
+  ],
+  setupFilesAfterEnv: [
+    '<rootDir>/tests/setup.js'
   ]
 }

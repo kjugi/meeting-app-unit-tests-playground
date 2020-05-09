@@ -12,14 +12,20 @@
           <select
             v-if="predefined"
             id="email"
+            data-testid="emailInput"
             v-model="selectedPerson"
             class="add-meeting__input"
           >
-            <option value="" selected></option>
+            <option
+              value=""
+              selected
+              data-testid="predefinedEmailOption"
+            ></option>
 
             <option
               v-for="(option, index) in options"
               :key="index"
+              data-testid="predefinedEmailOption"
             >
               {{ option.text }}
             </option>
@@ -29,6 +35,7 @@
             v-else
             id="email"
             v-model="email"
+            data-testid="emailInput"
             type="text"
             class="add-meeting__input"
             placeholder="Email address"
@@ -38,6 +45,7 @@
         <checkbox-field
           id="predefined"
           v-model="predefined"
+          data-testid="predefinedCheckbox"
           label="Predefined?"
           class="add-meeting__field"
           @change="clearPersonData"
@@ -53,6 +61,7 @@
           ref="meetingDate"
           id="meetingDate"
           v-model="meetingDate"
+          data-testid="meetingDateInput"
           type="date"
           class="add-meeting__input"
           :min="getFormattedDate"
@@ -62,6 +71,7 @@
       <div class="add-meeting__action-wrapper">
         <button
           class="add-meeting__button"
+          data-testid="addMeetingButton"
           @click="addMeeting"
           :disabled="!isFormValid || isFormBlocked"
         >
@@ -71,6 +81,7 @@
         <p
           v-if="!isFormValid"
           class="add-meeting__error"
+          data-testid="generalErrorMessage"
         >
           You've got a problem in form
         </p>

@@ -7,6 +7,7 @@
     <input
       :id="id"
       v-model="localValue"
+      v-bind="$attrs"
       type="checkbox"
     />
   </div>
@@ -14,6 +15,7 @@
 
 <script>
 export default {
+  inheritAttrs: false,
   props: {
     id: {
       type: String,

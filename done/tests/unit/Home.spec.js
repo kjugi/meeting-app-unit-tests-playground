@@ -17,13 +17,14 @@ describe('views/Home.vue', () => {
     }})
     const wrapper = createWrapper(HomePage, { store: localStore })
 
-    expect(wrapper.findAll('.home__item')).toHaveLength(2)
+    expect(wrapper.findAll('[data-testid="meetingItem"]')).toHaveLength(2)
     expect(wrapper).toMatchSnapshot()
   })
 
   it('render empty list message when don\'t have items', () => {
     const wrapper = createWrapper(HomePage)
 
-    expect(wrapper.find('.home div').text()).toBe('Meeting list is empty!')
+    expect(wrapper.find('[data-testid="emptyMessage"]').text())
+      .toBe('Meeting list is empty!')
   })
 })
