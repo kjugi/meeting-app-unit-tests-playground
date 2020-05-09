@@ -8,6 +8,7 @@
         v-for="(item, index) in meetingList"
         :key="index"
         class="home__item"
+        data-testid="meetingItem"
       >
         <h2>
           {{ item.who }}
@@ -18,7 +19,10 @@
         </span>
       </div>
     </div>
-    <div v-else>
+    <div
+      v-else
+      data-testid="emptyMessage"
+    >
       Meeting list is empty!
     </div>
   </div>
