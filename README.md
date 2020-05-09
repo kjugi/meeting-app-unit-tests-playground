@@ -51,6 +51,9 @@ Real example:
 jest tests/unit/Home.spec.js
 ```
 
+# TODO
+Idea with githook and doing tests before push
+
 ## Overview of 2 routes booking app:
 
 1. Homepage view with all booked meetings
