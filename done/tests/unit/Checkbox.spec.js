@@ -4,14 +4,15 @@ import Checkbox from '@/components/Checkbox.vue'
 const propsData = {
   id: 'checkbox1',
   label: 'label prop',
-  value: false
+  value: false,
+  'data-testid': 'testId'
 }
 
 describe('components/Checkbox.vue', () => {
   it('emit events when change checked value', () => {
     const wrapper = createWrapper(Checkbox, { propsData })
 
-    wrapper.find('#checkbox1').setChecked()
+    wrapper.find('[data-testid="testId"]').setChecked()
 
     expect(wrapper.emitted('change')).toBeDefined()
     expect(wrapper.emitted('change').length).toBe(1)
