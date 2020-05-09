@@ -110,6 +110,8 @@ Idea with githook and doing tests before push
 - Both side component testing
 - Snapshot testing
 - Acceptance testing and snapthot-diff checking
+- Using data-testid in components and tests
+- Githooks for unit tests
 
 ## Extra topic, not recommended in big stores:
 - Testing Vuex store instance
