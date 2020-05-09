@@ -128,8 +128,7 @@ describe('views/AddMeeting.vue', () => {
     expect(wrapper.vm.predefined).toBe(true)
     expect(present).toMatchSnapshot()
 
-    await wrapper.find('[data-testid="predefinedCheckbox"] input')
-      .setChecked(false)
+    await wrapper.find('[data-testid="predefinedCheckbox"]').setChecked(false)
     next = wrapper.html()
 
     expect(wrapper.vm.predefined).toBe(false)
@@ -143,8 +142,7 @@ describe('views/AddMeeting.vue', () => {
     expect(snapshotDiff(present, next)).toMatchSnapshot()
 
     present = next
-    await wrapper.find('[data-testid="predefinedCheckbox"] input')
-      .setChecked(true)
+    await wrapper.find('[data-testid="predefinedCheckbox"]').setChecked(true)
     next = wrapper.html()
 
     expect(wrapper.vm.email).toBe('')

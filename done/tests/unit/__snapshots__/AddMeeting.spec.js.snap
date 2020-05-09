@@ -19,9 +19,9 @@ exports[`views/AddMeeting.vue button can be disable or enabled 1`] = `
             Example Person2
           </option>
         </select></div>
-      <div class="checkbox add-meeting__field" data-testid="predefinedCheckbox"><label for="predefined">
+      <div class="checkbox add-meeting__field"><label for="predefined">
           Predefined?
-        </label> <input id="predefined" type="checkbox"></div>
+        </label> <input id="predefined" type="checkbox" data-testid="predefinedCheckbox"></div>
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
@@ -48,7 +48,7 @@ exports[`views/AddMeeting.vue button can be disable or enabled 2`] = `
 + Second value
 
 @@ -21,16 +21,14 @@
-          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\" data-testid=\\"predefinedCheckbox\\"></div>
       </div>
       <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">
           Meeting date
@@ -78,9 +78,9 @@ exports[`views/AddMeeting.vue can add meeting to store 1`] = `
         </label> <select id="email" data-testid="emailInput" class="add-meeting__input">
           <option value="" selected="selected" data-testid="predefinedEmailOption"></option>
         </select></div>
-      <div class="checkbox add-meeting__field" data-testid="predefinedCheckbox"><label for="predefined">
+      <div class="checkbox add-meeting__field"><label for="predefined">
           Predefined?
-        </label> <input id="predefined" type="checkbox"></div>
+        </label> <input id="predefined" type="checkbox" data-testid="predefinedCheckbox"></div>
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
@@ -118,9 +118,9 @@ exports[`views/AddMeeting.vue can add meeting to store 2`] = `
 -           <option value=\\"\\" selected=\\"selected\\" data-testid=\\"predefinedEmailOption\\"></option>
 -         </select></div>
 +         </label> <input id=\\"email\\" data-testid=\\"emailInput\\" type=\\"text\\" placeholder=\\"Email address\\" class=\\"add-meeting__input\\"></div>
-        <div class=\\"checkbox add-meeting__field\\" data-testid=\\"predefinedCheckbox\\"><label for=\\"predefined\\">
+        <div class=\\"checkbox add-meeting__field\\"><label for=\\"predefined\\">
             Predefined?
-          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\" data-testid=\\"predefinedCheckbox\\"></div>
       </div>
       <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">
           Meeting date
@@ -146,7 +146,7 @@ exports[`views/AddMeeting.vue can add meeting to store 3`] = `
 + Second value
 
 @@ -10,17 +10,19 @@
-          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\" data-testid=\\"predefinedCheckbox\\"></div>
       </div>
       <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">
           Meeting date
@@ -190,9 +190,9 @@ exports[`views/AddMeeting.vue can set custom meeting day in form 1`] = `
             Example Person2
           </option>
         </select></div>
-      <div class="checkbox add-meeting__field" data-testid="predefinedCheckbox"><label for="predefined">
+      <div class="checkbox add-meeting__field"><label for="predefined">
           Predefined?
-        </label> <input id="predefined" type="checkbox"></div>
+        </label> <input id="predefined" type="checkbox" data-testid="predefinedCheckbox"></div>
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
@@ -228,9 +228,9 @@ exports[`views/AddMeeting.vue default form is rendered 1`] = `
         </label> <select id="email" data-testid="emailInput" class="add-meeting__input">
           <option value="" selected="selected" data-testid="predefinedEmailOption"></option>
         </select></div>
-      <div class="checkbox add-meeting__field" data-testid="predefinedCheckbox"><label for="predefined">
+      <div class="checkbox add-meeting__field"><label for="predefined">
           Predefined?
-        </label> <input id="predefined" type="checkbox"></div>
+        </label> <input id="predefined" type="checkbox" data-testid="predefinedCheckbox"></div>
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
@@ -261,9 +261,9 @@ exports[`views/AddMeeting.vue error is showed when form is invalid 1`] = `
         </label> <select id="email" data-testid="emailInput" class="add-meeting__input">
           <option value="" selected="selected" data-testid="predefinedEmailOption"></option>
         </select></div>
-      <div class="checkbox add-meeting__field" data-testid="predefinedCheckbox"><label for="predefined">
+      <div class="checkbox add-meeting__field"><label for="predefined">
           Predefined?
-        </label> <input id="predefined" type="checkbox"></div>
+        </label> <input id="predefined" type="checkbox" data-testid="predefinedCheckbox"></div>
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
@@ -316,9 +316,9 @@ exports[`views/AddMeeting.vue has loading class when form is blocked 1`] = `
         </label> <select id="email" data-testid="emailInput" class="add-meeting__input">
           <option value="" selected="selected" data-testid="predefinedEmailOption"></option>
         </select></div>
-      <div class="checkbox add-meeting__field" data-testid="predefinedCheckbox"><label for="predefined">
+      <div class="checkbox add-meeting__field"><label for="predefined">
           Predefined?
-        </label> <input id="predefined" type="checkbox"></div>
+        </label> <input id="predefined" type="checkbox" data-testid="predefinedCheckbox"></div>
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
@@ -364,9 +364,9 @@ exports[`views/AddMeeting.vue has loading class when form is blocked 2`] = `
 +             Example Person2
 +           </option>
           </select></div>
-        <div class=\\"checkbox add-meeting__field\\" data-testid=\\"predefinedCheckbox\\"><label for=\\"predefined\\">
+        <div class=\\"checkbox add-meeting__field\\"><label for=\\"predefined\\">
             Predefined?
-          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\" data-testid=\\"predefinedCheckbox\\"></div>
       </div>"
 `;
 
@@ -380,9 +380,9 @@ exports[`views/AddMeeting.vue predefined addreses are available 1`] = `
         </label> <select id="email" data-testid="emailInput" class="add-meeting__input">
           <option value="" selected="selected" data-testid="predefinedEmailOption"></option>
         </select></div>
-      <div class="checkbox add-meeting__field" data-testid="predefinedCheckbox"><label for="predefined">
+      <div class="checkbox add-meeting__field"><label for="predefined">
           Predefined?
-        </label> <input id="predefined" type="checkbox"></div>
+        </label> <input id="predefined" type="checkbox" data-testid="predefinedCheckbox"></div>
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
@@ -428,9 +428,9 @@ exports[`views/AddMeeting.vue predefined addreses are available 2`] = `
 +             Example Person2
 +           </option>
           </select></div>
-        <div class=\\"checkbox add-meeting__field\\" data-testid=\\"predefinedCheckbox\\"><label for=\\"predefined\\">
+        <div class=\\"checkbox add-meeting__field\\"><label for=\\"predefined\\">
             Predefined?
-          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\" data-testid=\\"predefinedCheckbox\\"></div>
       </div>"
 `;
 
@@ -453,9 +453,9 @@ exports[`views/AddMeeting.vue predefined checkbox toggle fields and clear values
             Example Person2
           </option>
         </select></div>
-      <div class="checkbox add-meeting__field" data-testid="predefinedCheckbox"><label for="predefined">
+      <div class="checkbox add-meeting__field"><label for="predefined">
           Predefined?
-        </label> <input id="predefined" type="checkbox"></div>
+        </label> <input id="predefined" type="checkbox" data-testid="predefinedCheckbox"></div>
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
@@ -500,9 +500,9 @@ exports[`views/AddMeeting.vue predefined checkbox toggle fields and clear values
 -           </option>
 -         </select></div>
 +         </label> <input id=\\"email\\" data-testid=\\"emailInput\\" type=\\"text\\" placeholder=\\"Email address\\" class=\\"add-meeting__input\\"></div>
-        <div class=\\"checkbox add-meeting__field\\" data-testid=\\"predefinedCheckbox\\"><label for=\\"predefined\\">
+        <div class=\\"checkbox add-meeting__field\\"><label for=\\"predefined\\">
             Predefined?
-          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\" data-testid=\\"predefinedCheckbox\\"></div>
       </div>
       <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">"
 `;
@@ -536,9 +536,9 @@ exports[`views/AddMeeting.vue predefined checkbox toggle fields and clear values
 +             Example Person2
 +           </option>
 +         </select></div>
-        <div class=\\"checkbox add-meeting__field\\" data-testid=\\"predefinedCheckbox\\"><label for=\\"predefined\\">
+        <div class=\\"checkbox add-meeting__field\\"><label for=\\"predefined\\">
             Predefined?
-          </label> <input id=\\"predefined\\" type=\\"checkbox\\"></div>
+          </label> <input id=\\"predefined\\" type=\\"checkbox\\" data-testid=\\"predefinedCheckbox\\"></div>
       </div>
       <div class=\\"add-meeting__wrapper\\"><label for=\\"meetingDate\\">"
 `;
@@ -562,9 +562,9 @@ exports[`views/AddMeeting.vue predefined select change value to selected option 
             Example Person2
           </option>
         </select></div>
-      <div class="checkbox add-meeting__field" data-testid="predefinedCheckbox"><label for="predefined">
+      <div class="checkbox add-meeting__field"><label for="predefined">
           Predefined?
-        </label> <input id="predefined" type="checkbox"></div>
+        </label> <input id="predefined" type="checkbox" data-testid="predefinedCheckbox"></div>
     </div>
     <div class="add-meeting__wrapper"><label for="meetingDate">
         Meeting date
