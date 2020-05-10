@@ -51,9 +51,6 @@ Real example:
 jest tests/unit/Home.spec.js
 ```
 
-# TODO
-Idea with githook and doing tests before push
-
 ## Overview of 2 routes booking app:
 
 1. Homepage view with all booked meetings
@@ -111,7 +108,7 @@ Idea with githook and doing tests before push
 - Snapshot testing
 - Acceptance testing and snapthot-diff checking
 - Using data-testid in components and tests
-- Githooks for unit tests
+- Using husky to run Githooks for unit tests
 
 ## Extra topic, not recommended in big stores:
 - Testing Vuex store instance
