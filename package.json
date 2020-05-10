@@ -1,11 +1,7 @@
 {
-  "scripts": {
-    "runTests": "cd done && yarn && yarn test:unit"
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn runTests",
-      "pre-push": "yarn runTests"
+      "pre-push": "cd done && yarn && yarn test:unit"
     }
   },
   "devDependencies": {
