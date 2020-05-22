@@ -1,0 +1,10 @@
+{
+  "husky": {
+    "hooks": {
+      "pre-push": "cd done && yarn && yarn test:unit"
+    }
+  },
+  "devDependencies": {
+    "husky": "^4.2.5"
+  }
+}
